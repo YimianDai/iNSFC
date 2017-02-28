@@ -19,8 +19,6 @@
 \crefformat{equation}{式~（#2#1#3）}
 \usepackage{enumitem}
 \usepackage{fontspec}
-% \usepackage{minted}   % For syntax highlighting
-% \usemintedstyle{tango}
 \usepackage{setspace} 
 \usepackage{caption}
 \DeclareCaptionFont{capfont}{\kaishu\zihao{-4}\selectfont} % Caption font
@@ -113,31 +111,8 @@ demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是�
 \subsection{参考文献}
 在 insfc.sty 中，关于参考文献的设置如下，可以看到，我们使用了 natbib 宏包来定制参考文献，除了常用的 \textbackslash cite\{\} 命令来提供 full size 的参考文献引用，如文献\cite{li2014object}提出了XXX，还提供了 \textbackslash citess\{\} 命令用于提供上标时候的引用，如 Bengio 等学者\citess{bengio2013representation} XXXX。最后一句代码用于调节参考文献条目之间距离。
 
-% \begin{minted}[
-%   frame=lines,
-%   framesep=2mm,
-%   baselinestretch=1.2,
-%   fontsize=\footnotesize,
-%   linenos]{LaTeX}
-%   \usepackage[square,numbers,sort&compress]{natbib}
-%   \newcommand{\citess}[1]{\textsuperscript{\cite{#1}}}
-%   \setlength{\bibsep}{1pt plus 0.3ex}
-% \end{minted}
-
 参考文献的字体、大小和样式风格，可以在 .tex 文件中下面代码里调节。gbt7714-nsfc.bst 文件基于南京大学计算机科学与技术系胡海星博士的 GBT7714-2005-BibTeX-Style 项目\footnote{GBT7714-2005-BibTeX-Style 项目：\href{https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style}{https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style}}，我们在此基础上稍做了一点修改，使得英文人名从全部字母大写变为只有首字母大写。
 
-% \begin{minted}[
-%   frame=lines,
-%   framesep=2mm,
-%   baselinestretch=1.2,
-%   fontsize=\footnotesize,
-%   linenos]{LaTeX}
-%   \begin{spacing}{1.0}  
-%     \zihao{5} \songti   
-%     \bibliographystyle{gbt7714-nsfc}
-%     \bibliography{ref}
-%   \end{spacing}
-% \end{minted}
 
 因为写 demo，我把参考文献放这里了，真写本子的时候，还是要放在国内外概况那边。
 
