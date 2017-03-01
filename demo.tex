@@ -19,16 +19,25 @@
 \crefformat{equation}{式~（#2#1#3）}
 \usepackage{enumitem}
 \usepackage{fontspec}
+% \usepackage{minted}   % For syntax highlighting
+% \usemintedstyle{tango}
 \usepackage{setspace} 
 \usepackage{caption}
 \DeclareCaptionFont{capfont}{\kaishu\zihao{-4}\selectfont} % Caption font
 \DeclareCaptionFont{subfont}{\kaishu\zihao{5}\selectfont} % Sub-caption font
 \captionsetup{font = capfont}
 \captionsetup[subfigure]{font = subfont}
+\captionsetup[figure]{labelsep=space}
+\captionsetup[table]{labelsep=space}
 \usepackage[square,numbers,sort&compress]{natbib}   % For Reference
 \newcommand{\citess}[1]{\textsuperscript{\cite{#1}}}
 \setlength{\bibsep}{1pt plus 0.3ex}
 \usepackage{insfc}
+
+
+% \renewcommand\figurename{\fontsize{12bp}{\baselineskip} 图} 
+% \renewcommand\tablename{\fontsize{12bp}{\baselineskip} 表} 
+% \renewcommand{\captionlabeldelim}{.} 
 
 \graphicspath{{images/}}   % 设置图片所存放的目录
 
@@ -108,11 +117,54 @@
 
 demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是粗体；如果想使用 pdfLaTeX，需要在 insfc.sty 中将\textbackslash usepackage\{fontspec\} 注释掉，NsfcChapter 和 NsfcSection 命令中的 \textbackslash setmainfont\{KaiTi\} 去掉，但标题中的数字字体将不再是楷体，而且字宽会变宽一点。为了能够让 Sublime Text 中的 LaTeXTools 这样的插件也可以顺利编译，在 demo.tex 中也需要将第一行注释的 xelatex 改为对应的 lualatex 或者 pdflatex。
 
+经过 chengsshi 测试，将 .tex 中第三行的 linespread=1.56 去掉 CTeX 套装也能够编译通过，但注意请将编译结果与模板中给出的 PDF 对比一下。
+
+\subsection{字体}
+就个人审美而言，正文使用楷体比宋体更加美观。所以我们专门设置了楷体，如果用户想要将自己的内容设置为宋体，只需在 .tex 文件中将下列代码注释掉：
+
+% \begin{minted}[
+%   frame=lines,
+%   framesep=2mm,
+%   baselinestretch=1.2,
+%   fontsize=\footnotesize,
+%   linenos]{LaTeX}
+%   % 导言区中部  
+%   \DeclareCaptionFont{capfont}{\kaishu\zihao{-4}\selectfont} % Caption font
+%   \DeclareCaptionFont{subfont}{\kaishu\zihao{5}\selectfont} % Sub-caption font
+%   \captionsetup{font = capfont}
+%   \captionsetup[subfigure]{font = subfont}
+%   % \begin{document} 下方
+%   \kaishu
+% \end{minted}
+
 \subsection{参考文献}
 在 insfc.sty 中，关于参考文献的设置如下，可以看到，我们使用了 natbib 宏包来定制参考文献，除了常用的 \textbackslash cite\{\} 命令来提供 full size 的参考文献引用，如文献\cite{li2014object}提出了XXX，还提供了 \textbackslash citess\{\} 命令用于提供上标时候的引用，如 Bengio 等学者\citess{bengio2013representation} XXXX。最后一句代码用于调节参考文献条目之间距离。
 
+% \begin{minted}[
+%   frame=lines,
+%   framesep=2mm,
+%   baselinestretch=1.2,
+%   fontsize=\footnotesize,
+%   linenos]{LaTeX}
+%   \usepackage[square,numbers,sort&compress]{natbib}
+%   \newcommand{\citess}[1]{\textsuperscript{\cite{#1}}}
+%   \setlength{\bibsep}{1pt plus 0.3ex}
+% \end{minted}
+
 参考文献的字体、大小和样式风格，可以在 .tex 文件中下面代码里调节。gbt7714-nsfc.bst 文件基于南京大学计算机科学与技术系胡海星博士的 GBT7714-2005-BibTeX-Style 项目\footnote{GBT7714-2005-BibTeX-Style 项目：\href{https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style}{https://github.com/Haixing-Hu/GBT7714-2005-BibTeX-Style}}，我们在此基础上稍做了一点修改，使得英文人名从全部字母大写变为只有首字母大写。
 
+% \begin{minted}[
+%   frame=lines,
+%   framesep=2mm,
+%   baselinestretch=1.2,
+%   fontsize=\footnotesize,
+%   linenos]{LaTeX}
+%   \begin{spacing}{1.0}  
+%     \zihao{5} \songti   
+%     \bibliographystyle{gbt7714-nsfc}
+%     \bibliography{ref}
+%   \end{spacing}
+% \end{minted}
 
 因为写 demo，我把参考文献放这里了，真写本子的时候，还是要放在国内外概况那边。
 
@@ -124,7 +176,19 @@ demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是�
   \vspace{11bp}
 \end{spacing}
 
-\subsection{插图}
+\subsection{插图和表格}
+图题和标题序号后默认为空格，如果想改成 点、或者冒号，可以在导言区的下列两行代码中修改
+% \begin{minted}[
+%   frame=lines,
+%   framesep=2mm,
+%   baselinestretch=1.2,
+%   fontsize=\footnotesize,
+%   linenos]{LaTeX}
+%   % 空格 space；点 period；冒号 colon
+%   \captionsetup[figure]{labelsep=space}
+%   \captionsetup[table]{labelsep=space}
+% \end{minted}
+
 \begin{figure*}[htb!]
   \centering  
   \subfloat[\kaishu 涅尓瓦]{\includegraphics[width=0.17\textwidth]{"./Nerva"}\label{subfig:Nerva}
@@ -144,7 +208,6 @@ demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是�
 \cref{fig:Rome} 给出了 5 幅图像，分别是图~\subref*{subfig:Nerva} 涅尓瓦、图~\subref*{subfig:Traianus} 图拉真、
 图~\subref*{subfig:Hadrian} 哈德良、图~\subref*{subfig:Antoninus_Pius} 安敦尼\ 庇护 和 图~\subref*{subfig:Aurelius} 马可\ 奥勒留。
 
-\subsection{表格}
 
 \cref{tab:Quantitative} 给出了一个表格的例子。
 
@@ -175,7 +238,7 @@ demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是�
 唔，到饭点了，我饿了，就到这里吧。相信打算用这个模板的，都是 LaTeX 老手了，看下代码也都能明白了。
 
 \subsection*{致谢}
-感谢程明明教授的首创性工作，以及LaTeX 社区的 L 叔提供的细心指导。
+感谢程明明教授的首创性工作，LaTeX 社区的 L 叔的细心指导，水木社区 chengsshi 的指正。
 % {
 %   \raggedleft
 %   2017 年 2 月 27 日
