@@ -51,6 +51,22 @@
 
 模板默认按照 XeLaTeX 编译，如果使用 XeLaTeX，那么不需要做任何改动。demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是粗体；如果想使用 pdfLaTeX，需要在 insfc.sty 中将`\usepackage{fontspec}` 注释掉，`NsfcChapter` 和 `NsfcSection` 命令中的 `\setmainfont{KaiTi} `去掉，但标题中的数字字体将不再是楷体，而且字宽会变宽一点。为了能够让 Sublime Text 中的 LaTeXTools 这样的插件也可以顺利编译，在 demo.tex 中也需要将第一行注释的 xelatex 改为对应的 lualatex 或者 pdflatex。
 
+#### 字体
+
+就个人审美而言，正文使用楷体比宋体更加美观。所以我们专门设置了楷体，如果用户想要将自己的内容设置为宋体，只需在 .tex 文件中将下列代码注释掉：
+
+```latex
+% 导言区中部  
+\DeclareCaptionFont{capfont}{\kaishu\zihao{-4}\selectfont} % Caption font
+\DeclareCaptionFont{subfont}{\kaishu\zihao{5}\selectfont} % Sub-caption font
+\captionsetup{font = capfont}
+\captionsetup[subfigure]{font = subfont}
+% \begin{document} 下方
+\kaishu
+```
+
+
+
 #### 参考文献
 
 在 insfc.sty 中，关于参考文献的设置如下，可以看到，我们使用了 natbib 宏包来定制参考文献，除了常用的 `\ cite{}` 命令来提供 full size 的参考文献引用，还提供了 `\citess{}` 命令用于提供上标（右上角）时候的引用（ss 是 superscript 的缩写）。最后一句代码用于调节参考文献条目之间距离。
@@ -77,4 +93,4 @@
 
 ## 致谢
 
-最后感谢[程明明教授](http://mmcheng.net)的首创性工作，以及LaTeX 社区的 [L 叔](http://liam0205.me/)提供的细心指导，也感谢您一直阅读到这里，如果我的文章有错误或不足之处，请务必在评论中留言指出，千万不用客气，万分感谢~
+最后感谢[程明明教授](http://mmcheng.net)的首创性工作，LaTeX 社区的 [L 叔](http://liam0205.me/)提供的细心指导，水木社区 chengsshi 的指正，也感谢您一直阅读到这里，如果我的文章有错误或不足之处，请务必在评论中留言指出，千万不用客气，万分感谢~
