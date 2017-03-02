@@ -65,8 +65,6 @@
 \kaishu
 ```
 
-
-
 #### 参考文献
 
 在 insfc.sty 中，关于参考文献的设置如下，可以看到，我们使用了 natbib 宏包来定制参考文献，除了常用的 `\ cite{}` 命令来提供 full size 的参考文献引用，还提供了 `\citess{}` 命令用于提供上标（右上角）时候的引用（ss 是 superscript 的缩写）。最后一句代码用于调节参考文献条目之间距离。
@@ -89,7 +87,26 @@
 \end{spacing}
 ```
 
+#### 公式
+
+正文和公式之间的间距可以由在下列两句代码调整
+
+```latex
+% Decrease space above and below equations
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+```
+
+#### 插图和表格
+
 其余的插图和表格测试具体请见模板中的 `demo.pdf`。
+
+## Release Notes:
+
++ Version 1.03：修正了正文与公式之间间距过大的问题。
++ Version 1.02：上传了之前漏掉的 gbt7714-nsfc.bst，增加正文设置为宋体，图题表题去掉了冒号。
++ Version 1.01：去除了 minted 宏包。
++ Version 1.00：第一版。
 
 ## 致谢
 

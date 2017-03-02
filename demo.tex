@@ -35,15 +35,16 @@
 \usepackage{insfc}
 
 
-% \renewcommand\figurename{\fontsize{12bp}{\baselineskip} 图} 
-% \renewcommand\tablename{\fontsize{12bp}{\baselineskip} 表} 
-% \renewcommand{\captionlabeldelim}{.} 
 
 \graphicspath{{images/}}   % 设置图片所存放的目录
 
 \begin{document}
 
 \kaishu
+
+% Decrease space above and below equations
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
 
 %%%%%%%%% TITLE %%%%%%%%%
 % \title{报告正文 \vspace{-3.4ex}}
@@ -175,6 +176,30 @@ demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是�
   \bibliography{ref}  
   \vspace{11bp}
 \end{spacing}
+
+\subsection{正文与公式的间距}
+正文与公式的间距可以通过下面两行代码调整，模板默认为 0pt
+% \begin{minted}[
+%   frame=lines,
+%   framesep=2mm,
+%   baselinestretch=1.2,
+%   fontsize=\footnotesize,
+%   linenos]{LaTeX}
+%   % 位于导言区下方
+%   % Decrease space above and below equations
+%   \setlength{\abovedisplayskip}{0pt}
+%   \setlength{\belowdisplayskip}{0pt}
+% \end{minted}
+
+% Decrease space above and below equations
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
+
+这段文字用来测试正文与公式的间距。
+\begin{equation}
+E = MC^2
+\end{equation}
+这段文字用来测试正文与公式的间距。
 
 \subsection{插图和表格}
 图题和标题序号后默认为空格，如果想改成 点、或者冒号，可以在导言区的下列两行代码中修改
