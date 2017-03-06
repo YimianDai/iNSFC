@@ -13,6 +13,7 @@ foo.txt
 *.zip
 *.log
 *.blg
+demo.pdf
 _minted-demo/
 # foo.html是手工维护的，所以例外.
 !foo.html
