@@ -53,7 +53,7 @@
 
 ##### Mac 用户
 
-如果是 **Mac** 版 TeXlive 用户需要更改默认楷书字体，把 insfc.sty 里的 KaiTi 改成 Kai 就能正常编译通过了，但这样做粗体字显示不出来。林智 需要这么做：
+如果是 **Mac** 版 TeXlive 用户需要更改默认楷书字体，把 insfc.sty 里的 KaiTi 改成 Kai 就能正常编译通过了，但这样做粗体字显示不出来。林智老师告诉我 Mac 用户：
 
 > 在 Mac OS 10.12 Sierra 上用 TeXLive 2016 的 xeLaTeX 编译，需要对 insfc.sty 作如下改动：
 > 1 . 加入：
