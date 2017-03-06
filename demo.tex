@@ -27,8 +27,8 @@
 \DeclareCaptionFont{subfont}{\kaishu\zihao{5}\selectfont} % Sub-caption font
 \captionsetup{font = capfont}
 \captionsetup[subfigure]{font = subfont}
-\captionsetup[figure]{labelsep=space}
-\captionsetup[table]{labelsep=space}
+\captionsetup[figure]{labelsep=space} % 空格 space；点 period；冒号 colon
+\captionsetup[table]{labelsep=space}  % 空格 space；点 period；冒号 colon
 \usepackage[square,numbers,sort&compress]{natbib}   % For Reference
 \newcommand{\citess}[1]{\textsuperscript{\cite{#1}}}
 \setlength{\bibsep}{1pt plus 0.3ex}
@@ -74,18 +74,18 @@
 目前知道的 NSFC 模板一共两个，一个是 NSFC 官方给出的 Word 模板，也是LaTeX 模板的仿制对象。青年基金和面上基金的模板是一模一样的，本文的 LaTeX 模板也只是针对青年和面上，毕竟其他模板还无缘得见。Word 模板的具体样式如下：
 \begin{enumerate}[fullwidth,itemindent=0em, label=\arabic*)]
   \item \textbf{页面布局：}
-    \begin{itemize}[itemindent=2em]
-      \item \textbf{页边距：}上 2.54 厘米；下 2.54 厘米；左 3.2 厘米；右 3.2 厘米；装订线：0 厘米；
-      \item \textbf{纸张：}A4，宽度 21 厘米，高度 29.7 厘米；
-      \item \textbf{版式：}距边距 页眉 1.5 厘米，页脚 1.75 厘米。
-    \end{itemize}
+        \begin{itemize}[itemindent=2em]
+          \item \textbf{页边距：}上 2.54 厘米；下 2.54 厘米；左 3.2 厘米；右 3.2 厘米；装订线：0 厘米；
+          \item \textbf{纸张：}A4，宽度 21 厘米，高度 29.7 厘米；
+          \item \textbf{版式：}距边距 页眉 1.5 厘米，页脚 1.75 厘米。
+        \end{itemize}
   \item \textbf{文字：}
-    \begin{itemize}[itemindent=2em]
-      \item \textbf{正文标题：}字体是 加粗的楷体二号，段后间距 0.5 行，行距为固定值 22 磅；
-      \item \textbf{一级大标题：}楷体四号，段后间距 0.5 行，行距为固定值 22 磅；前半部分加粗，后半部分不加粗；
-      \item \textbf{二级标题：}楷体四号，行距为固定值 22 磅；前部的数字标号不加粗，中部文字加粗，最后部分不加粗；关于段后行距，部分有0.5行，部分没有，Word模板没统一，个人认为统一有更美观一些；
-      \item \textbf{颜色：}蓝色，RGB 数值为 (0, 112, 192)。
-    \end{itemize}  
+        \begin{itemize}[itemindent=2em]
+          \item \textbf{正文标题：}字体是 加粗的楷体二号，段后间距 0.5 行，行距为固定值 22 磅；
+          \item \textbf{一级大标题：}楷体四号，段后间距 0.5 行，行距为固定值 22 磅；前半部分加粗，后半部分不加粗；
+          \item \textbf{二级标题：}楷体四号，行距为固定值 22 磅；前部的数字标号不加粗，中部文字加粗，最后部分不加粗；关于段后行距，部分有0.5行，部分没有，Word模板没统一，个人认为统一有更美观一些；
+          \item \textbf{颜色：}蓝色，RGB 数值为 (0, 112, 192)。
+        \end{itemize}  
 \end{enumerate}
 
 另一个模板是今年1月8号，南开大学的程明明教授\footnote{程明明教授个人主页：\href{http://mmcheng.net}\href{http://mmcheng.net}}曾在 CTeX 论坛上给出过一个国家自然科学基金的 LaTeX 模版\footnote{程明明教授提供的模板：\href{http://www.latexstudio.net/archives/9308}{http://www.latexstudio.net/archives/9308}}。受程明明教授先驱工作的启发，我们也做了一点微小的工作。
@@ -197,7 +197,7 @@ demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是�
 
 这段文字用来测试正文与公式的间距。
 \begin{equation}
-E = MC^2
+  E = MC^2
 \end{equation}
 这段文字用来测试正文与公式的间距。
 
@@ -241,22 +241,22 @@ E = MC^2
   \setlength{\tabcolsep}{2pt}
   \scriptsize
   \caption{表格示例：定量评价指标比较.}
-    \begin{tabular}{lrrrrrrrrrrrrrrr}
+  \begin{tabular}{lrrrrrrrrrrrrrrr}
     \toprule
     Method & \multicolumn{3}{l}{XXX1} & & \multicolumn{3}{l}{XXX2} & & \multicolumn{3}{l}{XXX3} & & \multicolumn{3}{l}{XXX4} \\ 
     \cmidrule{2-4} \cmidrule{6-8} \cmidrule{10-12} \cmidrule{14-16}
     % \cline{2-4} \cline{6-8} \cline{10-12} \cline{14-16}
-           & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} & & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} & & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} & & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} \\
+            & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} &           & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} &           & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} &           & \multicolumn{1}{l}{指标1} & \multicolumn{1}{l}{指标2} & \multicolumn{1}{l}{指标3} \\
     \midrule          
-    Method1 & 1.49  & 3.20  & 3.26  &       & 1.02  & 3.75  & 3.44  &       & 2.80  & 3.57  & 3.87  &       & 2.82  & 7.51  & 4.90 \\
-    Method2 & 4.83  & 8.51  & 10.90 &       & 5.64  & 5.72  & 7.81  &       & 3.99  & 5.68  & 9.82  &       & 5.65  & 19.81 & 17.75 \\
-    Method3 & 2.64  & 9.23  & 10.18 &       & 5.03  & 11.11 & 9.45  &       & 2.69  & 8.03  & 8.80  &       & 3.92  & 32.03 & 21.22 \\
-    Method4   & 8.16  & 120.54 & 205.92 &       & 65.38 & 74.31 & 78.27 &       & 8.39  & 59.59 & 83.85 &       & 10.66 & 125.06 & 103.05 \\
-    Method5 & 2.96  & 8.71  & 39.94 &       & 8.83  & 9.68  & 11.32 &       & 3.16  & 7.01  & 10.97 &       & 4.38  & 23.94 & 31.47 \\
-    Method6  & 3.91  & 44.15 & \textbf{539.44} & \textbf{} & 18.22 & 39.38 & 43.14 &       & 7.63  & 51.84 & 72.81 &       & \textbf{29.18} & 309.65 & \textbf{479.56} \\
-    Method7 & \textbf{19.29} & \textbf{297.88} & 533.87 &       & \textbf{73.70} & \textbf{623.98} & \textbf{664.21} & \textbf{} & \textbf{11.65} & \textbf{103.58} & \textbf{149.16} & \textbf{} & 14.59 & \textbf{351.90} & 284.23 \\
+    Method1 & 1.49                        & 3.20                        & 3.26                        &           & 1.02                        & 3.75                        & 3.44                        &           & 2.80                        & 3.57                        & 3.87                        &           & 2.82                        & 7.51                        & 4.90                        \\
+    Method2 & 4.83                        & 8.51                        & 10.90                       &           & 5.64                        & 5.72                        & 7.81                        &           & 3.99                        & 5.68                        & 9.82                        &           & 5.65                        & 19.81                       & 17.75                       \\
+    Method3 & 2.64                        & 9.23                        & 10.18                       &           & 5.03                        & 11.11                       & 9.45                        &           & 2.69                        & 8.03                        & 8.80                        &           & 3.92                        & 32.03                       & 21.22                       \\
+    Method4 & 8.16                        & 120.54                      & 205.92                      &           & 65.38                       & 74.31                       & 78.27                       &           & 8.39                        & 59.59                       & 83.85                       &           & 10.66                       & 125.06                      & 103.05                      \\
+    Method5 & 2.96                        & 8.71                        & 39.94                       &           & 8.83                        & 9.68                        & 11.32                       &           & 3.16                        & 7.01                        & 10.97                       &           & 4.38                        & 23.94                       & 31.47                       \\
+    Method6 & 3.91                        & 44.15                       & \textbf{539.44}             & \textbf{} & 18.22                       & 39.38                       & 43.14                       &           & 7.63                        & 51.84                       & 72.81                       &           & \textbf{29.18}              & 309.65                      & \textbf{479.56}             \\
+    Method7 & \textbf{19.29}              & \textbf{297.88}             & 533.87                      &           & \textbf{73.70}              & \textbf{623.98}             & \textbf{664.21}             & \textbf{} & \textbf{11.65}              & \textbf{103.58}             & \textbf{149.16}             & \textbf{} & 14.59                       & \textbf{351.90}             & 284.23                      \\
     \bottomrule
-    \end{tabular}%
+  \end{tabular}%
   \label{tab:Quantitative}%
 \end{table}%
 

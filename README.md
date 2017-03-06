@@ -51,7 +51,18 @@
 
 模板默认按照 XeLaTeX 编译，如果使用 XeLaTeX，那么不需要做任何改动。demo.tex 用 LuaLaTeX 也可以编译通过，但标题加粗部分会不再是粗体；如果想使用 pdfLaTeX，需要在 insfc.sty 中将`\usepackage{fontspec}` 注释掉，`NsfcChapter` 和 `NsfcSection` 命令中的 `\setmainfont{KaiTi} `去掉，但标题中的数字字体将不再是楷体，而且字宽会变宽一点。为了能够让 Sublime Text 中的 LaTeXTools 这样的插件也可以顺利编译，在 demo.tex 中也需要将第一行注释的 xelatex 改为对应的 lualatex 或者 pdflatex。
 
-如果是 **Mac** 版 TeXlive 用户需要更改默认楷书字体，把 insfc.sty 里的 KaiTi 改成 Kai 就能正常编译通过了。
+##### Mac 用户
+
+如果是 **Mac** 版 TeXlive 用户需要更改默认楷书字体，把 insfc.sty 里的 KaiTi 改成 Kai 就能正常编译通过了，但这样做粗体字显示不出来。林智 需要这么做：
+
+> 在 Mac OS 10.12 Sierra 上用 TeXLive 2016 的 xeLaTeX 编译，需要对 insfc.sty 作如下改动：
+> 1 . 加入：
+> \setCJKfamilyfont{zhkai}[BoldFont={Kaiti SC Bold}]{Kaiti SC}
+> \setCJKfamilyfont{zhsong}[BoldFont={Songti SC Bold}]{Songti SC}
+> 因为新版 mac 系统和 ctex 宏包在字体名上有冲突，需要重新命名
+>
+> 2. 章名字体 \setmainfont{KaiTi} 需要改为 \ setmainfont{STKaiti} (注意大小写）
+> 3. 节序号字体 \ setmainfont{KaiTi} 改为 \ setmainfont{STHei} (Mac 中楷体数字字体都对不上)
 
 #### 字体
 
@@ -101,6 +112,14 @@
 
 #### 插图和表格
 
+图题和标题序号后默认为空格，如果想改成 点、或者冒号，可以在导言区的下列两行代码中修改
+
+```latex
+% 空格 space；点 period；冒号 colon
+\captionsetup[figure]{labelsep=space}
+\captionsetup[table]{labelsep=space}
+```
+
 其余的插图和表格测试具体请见模板中的 `demo.pdf`。
 
 ## Release Notes:
@@ -112,4 +131,4 @@
 
 ## 致谢
 
-最后感谢[程明明教授](http://mmcheng.net)的首创性工作，LaTeX 社区的 [L 叔](http://liam0205.me/)提供的细心指导，以及 chengsshi、noirchen 等朋友的指正，也感谢您一直阅读到这里，如果我的文章有错误或不足之处，请务必在评论中留言指出，千万不用客气，万分感谢~
+最后感谢[程明明教授](http://mmcheng.net)的首创性工作，LaTeX 社区的 [L 叔](http://liam0205.me/)提供的细心指导，以及 chengsshi、noirchen 、林智等朋友的指正，也感谢您一直阅读到这里，如果我的文章有错误或不足之处，请务必在评论中留言指出，千万不用客气，万分感谢~
