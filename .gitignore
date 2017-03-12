@@ -8,6 +8,7 @@ foo.txt
 *.fdb_latexmk
 *.fls
 *.synctex.gz
+*.gz(busy)
 *.gz
 *.out
 *.zip

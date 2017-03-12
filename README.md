@@ -123,7 +123,7 @@
 其余的插图和表格测试具体请见模板中的 `demo.pdf`。
 
 ## Release Notes:
-
++ Version 1.04：设置 Times New Roman 字体；替换已经过时的命令；增加 subsubsection 的缩进。
 + Version 1.03：修正了正文与公式之间间距过大的问题。
 + Version 1.02：上传了之前漏掉的 gbt7714-nsfc.bst，增加正文设置为宋体，图题表题去掉了冒号。
 + Version 1.01：去除了 minted 宏包。
