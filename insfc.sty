@@ -8,11 +8,6 @@
 % http://bbs.ctex.org/forum.php?mod=viewthread&tid=153098&extra=page%3D1
 % -------------------------------------------------
 
-
-
-
-
-
 % Cite mark [1] on the top right
 % \newcommand{\citetop}[1]{\textsuperscript{\cite{#1}}}
 
@@ -20,6 +15,9 @@
 
 
 % \setlength{\parskip}{0.5\baselineskip}
+
+\let\kaishu\relax % 清除旧定义
+\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold] % 重定义 \kaishu
 
 % xcolor command
 \definecolor{NsfcBlue}{RGB}{0, 112, 192}
