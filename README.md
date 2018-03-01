@@ -1,4 +1,4 @@
-# iNSFC - 2018 年国家自然基金 LaTeX 模板
+# iNSFC - 2018 年国家自然基金申请书 LaTeX 模板
 
 (本项目 fork 自 https://github.com/YimianDai/iNSFC ，仅作少量修改以适配 2018 版申请书正文)
 
