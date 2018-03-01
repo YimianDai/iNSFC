@@ -1700,7 +1700,8 @@ FUNCTION {inbook.impl} {                          % void Entry::inbook_impl() {
   true output.title                               %   output_title(true);
   true output.mark                                %   output_mark(true);
   false output.translator                         %   output_translator(false);
-  cap.double.slash write$                         %   write(cap_double_slash);
+  %cap.double.slash write$                        %   write(cap_double_slash);
+  cap.period write$                               %   write(cap.period);
   false output.editor                             %   output_editor(false);
   true output.series.volume.booktitle             %   output_series_volume_booktitle(true);
   false output.edition                            %   output_edition(false);
