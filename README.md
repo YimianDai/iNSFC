@@ -1,4 +1,6 @@
-# iNSFC - 2017 年国家自然基金 LaTeX 模板
+# iNSFC - 2018 年国家自然基金 LaTeX 模板
+
+(本项目全部来自 https://github.com/YimianDai/iNSFC ，仅作少量修改)
 
 对于高校教师和研究人员来说，国家自然科学基金（National Natural Science Foundation of China，NSFC）非常重要，写出能让所有专家都满意的本子也相当的耗时。对于平时只采用 LaTeX 格式投稿论文的老师来说，由于基金委只给出了 Word 模板，这种切换大致会有下面一些不方便：
 
