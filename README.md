@@ -2,6 +2,9 @@
 
 (本项目 fork 自 https://github.com/YimianDai/iNSFC ，仅作少量修改以适配 2018 版申请书正文)
 
+###目前存在的问题：
+1. author-year 引用（citet) 模式下，当前 bst 文件无法传送作者。
+
 对于高校教师和研究人员来说，国家自然科学基金（National Natural Science Foundation of China，NSFC）非常重要，写出能让所有专家都满意的本子也相当的耗时。对于平时只采用 LaTeX 格式投稿论文的老师来说，由于基金委只给出了 Word 模板，这种切换大致会有下面一些不方便：
 
 + 本子中很可能会用到以往小论文中的公式、图表以及参考文献，无法直接复制粘贴，要将一模一样的内容从 LaTeX 转换成 Word 需要不少时间；
