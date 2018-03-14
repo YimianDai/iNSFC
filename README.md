@@ -2,8 +2,16 @@
 
 (本项目 fork 自 https://github.com/YimianDai/iNSFC ，仅作少量修改以适配 2018 版申请书正文)
 
-### 目前存在的问题：
-1. author-year 引用（citet) 模式下，当前 bst 文件无法传送作者。
+### 更新记录：
+1. 适配 2018 年模板，即调整字数：建议8000字以内
+2. 使用 zepinglee 的参考文献格式：https://github.com/zepinglee/gbt7714-bibtex-style ；@zepinglee 是个很赞的人
+3. 增加 subsubsection 搞法，不过不建议套这么多层；本人 LaTeX 也是二把刀，原版的 subsection 不会改。
+
+### 注意事项：
+使用本 LaTeX 模板中部分标题的排版可能会和官方 Word 的模板有细微差别，一般就是断行位置不一样。
+个人认为这个关系不大，同一个 Word 文件，不同版本的 Word 打开还不一样呢。
+
+### 以下内容，全是原作者的。
 
 对于高校教师和研究人员来说，国家自然科学基金（National Natural Science Foundation of China，NSFC）非常重要，写出能让所有专家都满意的本子也相当的耗时。对于平时只采用 LaTeX 格式投稿论文的老师来说，由于基金委只给出了 Word 模板，这种切换大致会有下面一些不方便：
 
