@@ -1,0 +1,75 @@
+
+%# mathematical packages
+\usepackage{amsmath,amssymb,amsthm,amscd}
+\usepackage{mathtools}
+\usepackage{dsfont} % for \mathds{N} 
+\usepackage{bm} % for mathematical vector
+\usepackage[binary-units=true]{siunitx}
+    \sisetup{table-align-text-post=false, retain-unity-mantissa=false, exponent-product = \cdot}
+
+%# table packages
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage[font=footnotesize]{subcaption}
+\usepackage{booktabs} % for \toprule \midrule \bottomrule
+\usepackage{blkarray} % environment blockarray
+\usepackage{pdflscape}
+\usepackage{longtable}
+
+%# graphical packages
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{graphicx} 
+
+% reference
+\usepackage[hidelinks]{hyperref}
+%\usepackage[colorlinks=true, citecolor=blue, linkcolor=blue]{hyperref}
+\usepackage[square, numbers, sort&compress]{natbib}   % For Reference
+\usepackage{varioref} % vref vpageref
+\usepackage{cleveref} % 
+\usepackage{chapterbib} % referece in each chapter
+
+%# list, which is better than itemize enumerate description
+\usepackage{paralist} % \asparaitem \compactitem \asparaenum \compactenum
+\usepackage{verbatim} % for literal text input
+
+% underlining package
+\usepackage[normalem]{ulem}
+
+% Misc packages
+\usepackage{fancybox}
+\usepackage{eurosym}
+\usepackage[running]{lineno}
+\usepackage{afterpage}
+\usepackage{xspace}
+\usepackage{fontspec}
+\usepackage{setspace} 
+
+%# nomenclature 
+% a bug in this package: | is not allowed to use
+\usepackage[compatible]{nomencl}
+\setlength{\nomlabelwidth}{1.8cm}
+
+%# new commands
+% Cite mark [1] on the top right
+\newcommand{\cites}[1]{\textsuperscript{\cite{#1}}}
+\newcommand{\jiacu}[1]{{\bfseries\heiti #1}}
+\newcommand{\jiadian}[1]{{\kaishu \dotuline{#1}}}
+
+\newcommand{\dd}{\mathrm{d}} % for differential operator d
+\newcommand{\mi}{\mathrm{i}} % for math e
+\newcommand{\me}{\mathrm{e}} % for math i
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mean}[1]{\left\langle#1\right\rangle}
+\newcommand{\pbk}[1]{\left(#1\right)}
+\newcommand{\cbk}[1]{\left\lbrace#1\right\rbrace}
+\newcommand{\sbk}[1]{\left\lbrack#1\right\rbrack}
+\newcommand{\ie}{\textit{i.e.}\@\xspace}
+\newcommand{\eg}{\textit{e.g.}\@\xspace}
+\newcommand{\D}{\displaystyle} % for math display
+%\newcommand{\HE}{\hbox{H\kern-.12em\lower.48ex\hbox{E}}}
+\def\leaderfill{\leaders\hbox to 1em{\hss.\hss}\hfill}
+%\DeclareMathOperator{\OP}{OP}
+\DeclareSIUnit\molar{\mole\per\cubic\metre}
+\DeclareSIUnit\Molar{\textsc{M}}
