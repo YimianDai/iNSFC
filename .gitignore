@@ -14,5 +14,6 @@ foo.txt
 *.zip
 *.log
 *.blg
+*.xdv
 # foo.html是手工维护的，所以例外.
 #  忽略所有.o 和 .a文件.
