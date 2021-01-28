@@ -1,0 +1,335 @@
+\documentclass[a4paper]{article}
+
+\usepackage{insfc}
+\graphicspath{{images/}} 
+
+\begin{document}
+
+\xiaosihao %\zihao{-4}
+\maketitle
+
+\nsfcNote{参照以下提纲撰写，要求内容翔实、清晰，层次分明，标题突出。}{请勿删除或改动下述提纲标题及括号中的文字。}
+
+\nsfcChapter{（一）立项依据与研究内容}{（建议 8000 字以内）：}
+
+\nsfcSection{1}{项目的立项依据}{（研究意义、国内外研究现状及发展动态分析，需结合科学研究发展趋势来论述科学意义；或结合国民经济和社会发展中迫切需要解决的关键科技问题来论述其应用前景。附主要参考文献目录）；}{
+
+% 正文使用五号字体，间距用 setstretch 控制
+\setstretch{1.4}
+\zihao{5} 
+
+\subsection{项目研究意义}
+
+\subsubsection{Word 模板解析}
+
+\begin{itemize}
+    \item \emph{纸张} A4，宽度 21 厘米，高度 29.7 厘米。
+    \item \emph{页边距 }  上 2.54 厘米，下 2.54 厘米，左 3.2 厘米，右 3.2 厘米；装订线 0 厘米。
+    \item \emph{版式 } 距边界 页眉 1.5 厘米，页脚 1.75 厘米。
+    \item \emph{蓝色 } RGB 数值为 (0, 112, 192)。
+    \item \emph{字体 } 所有提纲字体，除“报告正文”为楷体三号外，其余均为楷体四号。
+    \item \emph{序号 } 所有序号 1 2 3 4 均为楷体四号不加粗。
+    \item \emph{行距 } 全部模板文字固定值 22 磅。
+    \item \emph{强调 } 所有提纲标题（亦前半部分）均伪粗体加粗，括号内说明性文字（亦后半部分）均不加粗。
+    \item \emph{间距 } “报告正文”段后间距0.2行；note 说明（{\kaishu 参照以下提纲撰写 \dots}）的段后间距为0.5行；chapter （{\kaishu（一）立项依据与研究内容}）段后间距0.5行；后面 Word 模板就没统一了，此模板按照 0.5 行统一。
+\end{itemize}  
+
+
+\subsection{国内外研究现状及发展动态}
+
+\subsubsection{iNFSC 模板匹配}
+\begin{itemize}
+    \item \emph{纸张}  \begin{verbatim} \documentclass[a4paper]{article} \end{verbatim}
+    \item \emph{页边距 } \begin{verbatim} \usepackage[left=3.2cm, right=3.2cm, top=2.54cm, bottom=2.54cm]{geometry} \end{verbatim}
+    \item \emph{版式 } \jiacu{暂时还不清楚是否有匹配，及匹配方式}
+    \item \emph{蓝色 } \begin{verbatim} \definecolor{nsfcBlue}{RGB}{0, 112, 192} \end{verbatim}
+    \item \emph{字体 } \begin{verbatim}
+\usepackage[UTF8, fontset=none]{ctex} % 显式指定 uft8 编码选项
+% 通过 ctexset 命令微调对基金 Word 模板进行最大化匹配
+% 这里有个很痛苦的决定，为了和 Word 保持一致，需要你不管在什么操作
+%系统下都使用 Windows 的字体，所以你需要自己搞定在你的系统中怎么安装
+\ctexset{fontset=windowsnew, % new, fandol, adobe, ubuntu, windowsold 
+    punct=quanjiao, % banjiao, kaiming, CCT
+    autoindent=true, % false
+    linestretch=0.8,
+    today=small, % big, old
+    space=auto, % true, false
+    % linespread,
+    % zihao, 
+    % heading, 
+    % scheme, 
+}
+\usepackage{xeCJK}
+\xeCJKsetup{CheckSingle=true, % 孤字检查
+    AutoFallBack=true, % 生僻字
+    AutoFakeBold=false, % 不使用伪粗体，因为会很难看
+    AutoFakeSlant=true} % 伪斜体
+
+% 设置标题字体为楷体三号伪加粗
+    % 用 vspace 来设置段后距离
+\renewcommand{\maketitle}{
+    \begingroup    
+    \begin{center}
+        {\zihao{3} \bfseries \kaishu 报告正文 \vspace{-1.3ex}}
+    \end{center}  
+    \thispagestyle{empty}
+    \endgroup
+}
+
+% 设置正文小四号字体
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont} 
+% 为楷体启用伪粗体 autofakebold 并定义为 \kaishu
+\let\kaishu\relax
+\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold] 
+\end{verbatim}
+    \item \emph{行距 } \begin{verbatim} \setlength{\baselineskip}{22bp} \end{verbatim}
+    \item \emph{强调 } \begin{verbatim}
+% 定义蓝色楷体四号 \kaishuBlue
+\newcommand{\kaishuBlue}[1]{\textcolor{nsfcBlue}{\zihao{4} \kaishu #1}}
+% 定义伪加粗蓝色楷体四号 \kaishuBlueBold
+\newcommand{\kaishuBlueBold}[1]{\bfseries\kaishuBlue{#1}}
+\end{verbatim}
+    \item \emph{提纲文字 } \begin{verbatim}
+% Note definition: 参照以下提纲撰写，要求内容...
+    % 用 vspace 来设置段后距离
+\newcommand{\nsfcNote}[2]{   
+    \begingroup
+    \setlength{\baselineskip}{22bp}
+    \indent {\zihao{4} \kaishu #1}{\kaishuBlueBold{#2}} \vspace{5bp}%
+    \endgroup }
+% Chapter definition:（一）立项依据与研究内容（建议8000字以内）
+% this is a hard-core modification, as no chapter definition in the article class
+    % 用 vspace 来设置段后距离
+\newcommand{\nsfcChapter}[2]{   
+    \begingroup
+    \setcounter{section}{0}  
+    \setlength{\baselineskip}{22bp}
+    \indent {\kaishuBlueBold{#1}}{\kaishuBlue{#2}} \vspace{4bp}%
+    \endgroup }
+% Section definition: 2．项目的研究内容、研究目标，以及拟解决的关键科学问题 ...
+\newcommand{\nsfcSection}[3]{   
+    \setcounter{section}{#1}
+    \setcounter{subsection}{0}
+    \indent {\kaishuBlueBold{\setmainfont{KaiTi} #1．}}
+        {\kaishuBlueBold{#2}}{\kaishuBlue{#3}} 
+}
+\end{verbatim}
+
+\end{itemize}  
+
+\subsubsection{进一步调整}
+进一步调整的意思是，需不需要这部分取决于你的喜好。
+\begin{itemize}
+    \item \emph{正文字体} 本模板采用 $\text{zihao}\{5\}$ $\text{setstretch}\{1.4\}$ 来安排正文布局。
+    \item 段与段之间设置间隔，以提高美观性 \begin{verbatim}
+% 设置每自然段之间 parskip 为 0.5em，使文档更加美观
+\setlength{\parskip}{0.5em} \end{verbatim}
+    \item 进一步设置 subsection 和 subsubsection 的格式提高美观性 \begin{verbatim}
+% Subsection definition (cf. Prof. Mingming Chen)
+\def\cvprsubsection{\@startsection {subsection}{2}{\z@}
+{11pt plus 2pt minus 2pt}{6pt} {\bfseries \heiti}}
+\def\cvprssubsect#1{\cvprsubsection*{\large #1}}
+\def\cvprsubsect#1{\cvprsubsection{\hskip -1em.~#1 }\vspace{-0.2em}}
+\def\subsection{\@ifstar\cvprssubsect\cvprsubsect}
+
+% Subsubsection definition
+\def\cvprsubsubsection{\@startsection {subsubsection}{3}{\z@}
+{11pt plus 2pt minus 2pt}{6pt} {\bfseries \songti}}
+\def\cvprssubsubsect#1{\cvprsubsubsection*{\large #1}}
+\def\cvprsubsubsect#1{\cvprsubsubsection{\hskip -1em.~#1}\vspace{-0.2em}}
+\def\subsubsection{\@ifstar\cvprssubsubsect\cvprsubsubsect}
+\end{verbatim}
+    \item \emph{参考文献}格式优化 \begin{verbatim}
+% 设定“参考文献”字样
+\renewcommand\refname{
+    \textcolor{black}{\hskip 2pt \zihao{-4}\songti{参考文献}}
+}
+% 设置每条参考文献之间间距
+\setlength{\bibsep}{1pt plus 0.3ex}
+\end{verbatim}
+    \item 修改 图 1： 的形式为 图 1. \begin{verbatim}
+% 调用 cleveref 宏包将 图 1: 的样式改为 图 1.
+\captionsetup[figure]{labelsep=period}
+\captionsetup[table]{labelsep=period}
+\end{verbatim}
+    \item 页码 \begin{verbatim}
+% 文档不能有页码，因为提交后会自动生成
+\pagestyle{empty}
+\end{verbatim}
+\end{itemize}
+
+
+\newpage
+\begin{spacing}{1.2}
+    \zihao{5} \songti
+    %\bibliographystyle{unsrt}
+    %\bibliographystyle{refBst/gbt7714-nsfc.bst}
+    \bibliographystyle{refBst/elsarticle-num-names}
+    \bibliography{references}
+\end{spacing}
+}
+
+\newpage
+\nsfcSection{2}{项目的研究内容、研究目标，以及拟解决的关键科学问题}{（此部分为重点阐述内容）；}{
+
+\zihao{5} \setstretch{1.4}
+
+\subsection{研究目标}
+\subsubsection{文本效果展示}
+对于高校教师和研究人员来说，国家自然科学基金 \cite{li2014object}（National Natural Science Foundation of China，NSFC）非常重要，写出能让所有专家都满意的本子也相当的耗时。
+对于平时只采用 \LaTeX 格式投稿论文的老师来说，由于基金委只给出了 Word 模板，这种切换大致会有下面一些不方便：
+\begin{itemize}
+    \item 本子中很可能会用到以往小论文中的公式、图表以及参考文献，无法直接复制粘贴，要将一模一样的内容从 \LaTeX 转换成 Word 需要不少时间 \cite{he2018efficient, he2019bayesian}；
+    \item Word 中对参考文献、图表、公式的交叉引用没有 \LaTeX 来的方便。
+\end{itemize}
+很自然的，如果能有一个国家自然基金的 \LaTeX 模板就好了，可以挤出更多的时间来关注内容，而非格式以及排列参考文献这种机械无聊的事情上 \citep{scopes2013protein}。
+\subsection{研究内容} 
+\subsubsection{新添加的命令环境}
+\begin{itemize}
+    \item 因为基金没有严格定义参考文献格式，也没有提供 bst 文件，所以给格式留下了很大的自由度。所以，这里也考虑一部分研究者喜欢上角标的文献引用 \begin{verbatim} \newcommand{\cites}[1]{\textsuperscript{\cite{#1}}} \end{verbatim}
+    \item 在基金本子的写作中，因为很多专家没有时间看，所以就要求写作者要将一些语言强调，让他们能快速的看懂。（对于这个我没有什么意见要发表）。所以这里引入了多级强调，黑体加粗为一级强调；楷体加点为二级强调；宋体下划线和波浪线为三级强调
+\begin{verbatim}
+\newcommand{\jiacu}[1]{{\bfseries\heiti #1}} % 效果完全等同于 \textbf{}
+\newcommand{\jiadian}[1]{{\kaishu \dotuline{#1}}}
+\newcommand{\xiahua}[1]{uline{#1}} % 或者用波浪 \uwave{}
+\end{verbatim}
+    \item 数学公式中一些符号
+\begin{verbatim}
+\newcommand{\dd}{\mathrm{d}} % for differential operator d
+\newcommand{\mi}{\mathrm{i}} % for math e
+\newcommand{\me}{\mathrm{e}} % for math i
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\mean}[1]{\left\langle#1\right\rangle}
+\newcommand{\pbk}[1]{\left(#1\right)}
+\newcommand{\cbk}[1]{\left\lbrace#1\right\rbrace}
+\newcommand{\sbk}[1]{\left\lbrack#1\right\rbrack}
+\newcommand{\ie}{\textit{i.e.}\@\xspace}
+\newcommand{\eg}{\textit{e.g.}\@\xspace}
+\newcommand{\D}{\displaystyle} % for math display
+\end{verbatim}
+\end{itemize}
+\subsection{拟解决关键科学问题}
+\subsubsection{新命令的展示}
+对于高校教师和研究人员来说，国家自然科学基金（National Natural Science Foundation of China，NSFC）非常重要，\jiacu{写出能让所有专家都满意}\textbf{的本子也相当的耗时}。
+\uline{对于平时只采用 \LaTeX 格式投稿论文的老师来说}，\uwave{由于基金委只给出了 Word 模板}，\jiadian{这种切换大致会有下面一些不方便} \cites{bengio2013representation}：
+\begin{equation}
+    \D\frac{\dd q_i^j}{\dd t} = \norm{ \mean{k_{a,i}}\, c_{p,i}^j \pbk{q_\text{max} - \sum_{k=1}^M q_k^j} - k_{d,i}\, q_\mi^\me }^\alpha
+\end{equation}
+\begin{verbatim}
+\begin{equation}
+    \D\frac{\dd q_i^j}{\dd t} = \norm{ \mean{k_{a,i}}\, c_{p,i}^j \pbk{q_\text{max} 
+    - \sum_{k=1}^M q_k^j} - k_{d,i}\, q_\mi^\me }^\alpha
+\end{equation}
+\end{verbatim}
+
+\subsubsection{仍需要解决的问题}
+\begin{itemize}
+    \item 距边界 页眉 1.5 厘米，页脚 1.75 厘米是否需要设定，这个问题仍需要被回答
+    \item 通过 vspace 来控制段后 0.5 行的操作不够得体和精确
+\end{itemize}
+}
+
+\newpage
+\nsfcSection{3}{拟采取的研究方案及可行性分析}{（包括研究方法、技术路线、实验手段、关键技术等说明）；}{
+
+\zihao{5} \setstretch{1.4}
+\subsection{拟采取的研究方案}
+\subsection{研究方案的可行性分析}
+}
+
+\newpage
+\nsfcSection{4}{本项目的特色与创新之处；}{}{
+
+特色与创新之处 \ldots
+
+}
+
+\newpage
+\nsfcSection{5}{年度研究计划及预期研究结果}{（包括拟组织的重要学术交流活动、国际合作与交流计划等）。}{
+
+\zihao{5} \setstretch{1.2}
+\subsection{年度研究计划}
+
+\noindent 2021年1月-- 2021年12月
+\begin{itemize}
+    \item 
+    \item 
+    \item 
+\end{itemize}
+
+\noindent 2022年1月 -- 2022年12月
+\begin{itemize}
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+\end{itemize}
+
+\noindent 2023年1月 -- 2023年12月
+\begin{itemize}
+    \item 
+    \item 
+    \item 
+    \item 
+    \item 
+\end{itemize}
+
+\subsection{预期取得的成果}
+\begin{itemize}
+    \item 
+    \item 
+    \item 
+    \item 
+\end{itemize}
+}
+
+\newpage
+\nsfcChapter{（二）研究基础与工作条件}{}
+
+\nsfcSection{1}{研究基础}{（与本项目相关的研究工作积累和已取得的研究工作成绩）；}{
+
+\zihao{5} \setstretch{1.4}
+本项目团队 \ldots
+}
+
+\nsfcSection{2}{工作条件}{（包括已具备的实验条件，尚缺少的实验条件和拟解决的途径，包括利用国家实验室、国家重点实验室和部门重点实验室等研究基地的计划与落实情况）；}{
+
+\zihao{5} \setstretch{1.4}
+本项目依托 \ldots
+
+}
+
+\nsfcSection{3}{正在承担的与本项目相关的科研项目情况}{（申请人和项目组主要参与者正在承担的与本项目相关的科研项目情况，包括国家自然科学基金的项目和国家其他科技计划项目，要注明项目的名称和编号、经费来源、起止年月、与本项目的关系及负责的内容等）；}{
+
+无
+}
+
+\nsfcSection{4}{完成国家自然科学基金项目情况}{（对申请人负责的前一个已结题科学基金项目（项目名称及批准号）完成情况、后续研究进展及与本申请项目的关系加以详细说明。另附该已结题项目研究工作总结摘要（限500字）和相关成果的详细目录）。}{
+
+无
+}
+
+\nsfcChapter{（三）其他需要说明的问题}{}
+
+\nsfcSection{1}{}{申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之间的区别与联系）。}{
+
+无
+}
+
+\nsfcSection{2}{}{具有高级专业技术职务（职称）的申请人或者主要参与者是否存在同年申请或者参与申请国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，申请或参与申请的其他项目的项目类型、项目名称、单位名称、上述人员在该项目中是申请人还是参与者，并说明单位不一致原因。}{
+
+无
+}
+
+\nsfcSection{3}{}{具有高级专业技术职务（职称）的申请人或者主要参与者是否存在与正在承担的国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，正在承担项目的批准号、项目类型、项目名称、单位名称、起止年月，并说明单位不一致原因。}{
+
+无
+}
+
+\nsfcSection{4}{}{其他。}{
+
+无
+}
+\end{document}

@@ -14,9 +14,6 @@ foo.txt
 *.zip
 *.log
 *.blg
-demo.pdf
-_minted-demo/
+*.xdv
 # foo.html是手工维护的，所以例外.
-!foo.html
 #  忽略所有.o 和 .a文件.
-*.[oa]

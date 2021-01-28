@@ -1,78 +1,119 @@
-% -------------------------------------------------
-% Another NSFC LaTeX template.
-% Latest version: https://github.com/YimianDai/NSFC-LaTeX
-% Latest document: http://lowrank.science/NSFC-LaTeX/
-% Yimian Dai, Feb. 2017. Questions? yimian.dai@gmail.com ;
-%
-% Thank Prof. Mingming Chen for his pioneer work. 
-% http://bbs.ctex.org/forum.php?mod=viewthread&tid=153098&extra=page%3D1
-% -------------------------------------------------
+% 根据基金 Word 模板制定上下左右页面边距
+\usepackage[left=3.2cm, right=3.2cm, top=2.54cm, bottom=2.54cm]{geometry}
 
+% 因为基金 Word 模板定义了章节标题，所以不可直接使用 ctexart 
+% 只启用 ctex.sty 宏包以支持中文排版
+\usepackage[UTF8, fontset=none]{ctex} % 显式指定 uft8 编码选项
 
+% 通过 ctexset 命令微调对基金 Word 模板进行最大化匹配
+    % 这里有个很痛苦的决定，为了和 Word 保持一致，需要你不管在什么操作
+    %系统下都使用 Windows 的字体，所以你需要自己搞定在你的系统中怎么安装
+\ctexset{fontset=windowsnew, % new, fandol, adobe, ubuntu, windowsold 
+    punct=quanjiao, % banjiao, kaiming, CCT
+    autoindent=true, % false
+    linestretch=0.8,
+    today=small, % big, old
+    space=auto, % true, false
+    % linespread,
+    % zihao, 
+    % heading, 
+    % scheme, 
+}
 
+\usepackage{xeCJK}
+\xeCJKsetup{CheckSingle=true, % 孤字检查
+    AutoFallBack=true, % 生僻字
+    AutoFakeBold=false, % 不使用伪粗体，因为会很难看
+    AutoFakeSlant=true} % 伪斜体
 
+% 定义正文字体为 12pt
+\newcommand{\xiaosihao}{\fontsize{12pt}{\baselineskip}\selectfont}    %小四号
+%\newcommand{\xiaosihao}{\zihao{-4}}    %小四号
 
+% 楷体加粗：启用 autofakebold 并定义为 \kaishu
+\let\kaishu\relax
+\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold] 
 
-% Cite mark [1] on the top right
-% \newcommand{\citetop}[1]{\textsuperscript{\cite{#1}}}
+% 定义四号蓝色楷体为 \kaishuBlue
+% 定义四号蓝色楷体伪加粗为 \kaishuBlueBold
+\newcommand{\kaishuBlue}[1]{\textcolor{nsfcBlue}{{\zihao{4}{{\kaishu #1}}}}}
+\newcommand{\kaishuBlueBold}[1]{\bfseries\kaishuBlue{#1}}
 
-% enumitem command
+% 建议将一些常用的非必须项的宏包还是归纳到 preamble.tex 文件
+\input{preamble.tex}
 
+% 定义 Word 模板中的蓝色
+\definecolor{nsfcBlue}{RGB}{0, 112, 192}
+% 调用 cleveref 宏包将 图 1: 的样式改为 图 1.
+\captionsetup[figure]{labelsep=period}
+\captionsetup[table]{labelsep=period}
 
-% \setlength{\parskip}{0.5\baselineskip}
+% 文档不能有页码，因为提交后会自动生成
+\pagestyle{empty}
 
-% xcolor command
-\definecolor{NsfcBlue}{RGB}{0, 112, 192}
-
-% setspace command
-% \setstretch{1.5} % 22 bp / 14 pt = 1.571
-
-% For bule regular 14 bp NSFC words 
-\newcommand{\NsfcNote}[1]{\textcolor{NsfcBlue}{{\zihao{4}{{\kaishu #1}}}}}
-\newcommand{\alert}[1]{\textcolor{NsfcBlue}{{\zihao{4}{{\bfseries \kaishu #1}}}}}
-
-% For the chapter name like （一）立项依据与研究内容（4000-8000字）
-\newcommand{\NsfcChapter}[2]{   
-  \begingroup
-    \setcounter{section}{0}  
-    % \setlength{\parskip}{0.5\baselineskip}
-    % For xelatex
-    \setlength{\baselineskip}{22bp}
-    \indent {\bfseries \NsfcNote{#1}}\NsfcNote{\setmainfont{KaiTi}#2} \vspace{9bp}%
-    % For pdflatex
-    % \indent {\bfseries \NsfcNote{#1}}\NsfcNote{#2} %
+% 设置“报告正文”标题
+\renewcommand{\maketitle}{
+  \begingroup    
+        \begin{center}
+            {\zihao{3} \bfseries\kaishu 报告正文 \vspace{-1.3ex}}
+        \end{center}  
+        \thispagestyle{empty}
   \endgroup
 }
 
-% For the section name like 2．项目的研究内容、研究目标，以及拟解决的关键科学问题（此部分为重点阐述内容）；
-\newcommand{\NsfcSection}[3]{   
-  \setcounter{section}{#1}
-  \setcounter{subsection}{0}
-  % For xelatex
-  \indent \NsfcNote{\setmainfont{KaiTi} #1．}{\bfseries\NsfcNote{#2}}\NsfcNote{#3}%
-  % For pdflatex
-  % \indent \NsfcNote{#1．}{\bfseries\NsfcNote{#2}}\NsfcNote{#3} %
-}
-
-% \renewcommand{\maketitle}{
-%   \begingroup    
-%     \begin{center} 
-%       \setlength{\baselineskip}{22bp}
-%       \zihao{2} \bfseries \@title \vspace{0.5\baselineskip}
-%     \end{center} 
-%   \endgroup
-% }
-
+% 设定“参考文献”字样
 \renewcommand\refname{
   \textcolor{black}{\hskip 2pt \zihao{-4}\songti{参考文献}}
 }
+% 设置每条参考文献之间间距
+\setlength{\bibsep}{1pt plus 0.3ex}
 
-% \setlength{\baselineskip}{22pt}
+% Note definition: 参照以下提纲撰写，要求内容翔实、清晰，层次分明，...
+\newcommand{\nsfcNote}[2]{   
+  \begingroup
+    \setlength{\baselineskip}{22pt}
+    \indent {\zihao{4} \kaishu #1}{\kaishuBlueBold{#2}} \vspace{5bp}%
+  \endgroup
+}
 
-% Prof. Mingming Chen's definition on subsection
+% Chapter definition:（一）立项依据与研究内容（建议8000字以内）
+% this is a hard-core modification, as no chapter definition in the article class
+\newcommand{\nsfcChapter}[2]{   
+  \begingroup
+    \setcounter{section}{0}  
+    \setlength{\baselineskip}{22pt}
+    \indent {\kaishuBlueBold{#1}}{\kaishuBlue{#2}} \vspace{4bp}%
+  \endgroup
+}
+
+% Section definition: 2．项目的研究内容、研究目标，以及拟解决的关键科学问题（此部分为重点阐述内容）；
+\newcommand{\nsfcSection}[3]{   
+    \begingroup
+        \setcounter{section}{#1}
+        \setcounter{subsection}{0}
+        \setlength{\baselineskip}{22pt}
+        \indent {\kaishuBlueBold{\setmainfont{KaiTi} #1．}}{\kaishuBlueBold{#2}}{\kaishuBlue{#3}}
+    \endgroup
+}
+
+% Subsection definition (cf. Prof. Mingming Chen)
 \def\cvprsubsection{\@startsection {subsection}{2}{\z@}
-   {11pt plus 2pt minus 2pt}{6pt} {\indent \bfseries \songti}}
-\def\cvprssubsect#1{\cvprsubsection*{#1}}
-\def\cvprsubsect#1{\cvprsubsection{\hskip -1em.~#1 \vspace{-0.2em}}}
+   {11pt plus 2pt minus 2pt}{6pt} {\bfseries \heiti}}
+\def\cvprssubsect#1{\cvprsubsection*{\large #1}}
+\def\cvprsubsect#1{\cvprsubsection{\hskip -1em.~#1 }\vspace{-0.2em}}
 \def\subsection{\@ifstar\cvprssubsect\cvprsubsect}
+
+% Subsubsection definition
+\def\cvprsubsubsection{\@startsection {subsubsection}{3}{\z@}
+   {11pt plus 2pt minus 2pt}{6pt} {\bfseries \songti}}
+\def\cvprssubsubsect#1{\cvprsubsubsection*{\large #1}}
+\def\cvprsubsubsect#1{\cvprsubsubsection{\hskip -1em.~#1}\vspace{-0.2em}}
+\def\subsubsection{\@ifstar\cvprssubsubsect\cvprsubsubsect}
+
+% 设置每自然段之间 parskip 为 0.5em，使文档更加美观
+\setlength{\parskip}{0.5em}
+
+% setspace command
+%\setstretch{1.4} % 22 bp / 14 pt = 1.571
+
 
