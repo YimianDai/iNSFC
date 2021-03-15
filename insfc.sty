@@ -8,18 +8,15 @@
 % http://bbs.ctex.org/forum.php?mod=viewthread&tid=153098&extra=page%3D1
 % -------------------------------------------------
 
-
-
-
-
-
 % Cite mark [1] on the top right
 % \newcommand{\citetop}[1]{\textsuperscript{\cite{#1}}}
 
 % enumitem command
 
-
 % \setlength{\parskip}{0.5\baselineskip}
+
+\let\kaishu\relax % 清除旧定义
+\newCJKfontfamily\kaishu{KaiTi}[AutoFakeBold] % 重定义 \kaishu
 
 % xcolor command
 \definecolor{NsfcBlue}{RGB}{0, 112, 192}
@@ -38,7 +35,7 @@
     % \setlength{\parskip}{0.5\baselineskip}
     % For xelatex
     \setlength{\baselineskip}{22bp}
-    \indent {\bfseries \NsfcNote{#1}}\NsfcNote{\setmainfont{KaiTi}#2} \vspace{9bp}%
+    \indent {\bfseries \NsfcNote{#1}}\NsfcNote{\fontspec{KaiTi}#2} %
     % For pdflatex
     % \indent {\bfseries \NsfcNote{#1}}\NsfcNote{#2} %
   \endgroup
@@ -64,15 +61,17 @@
 % }
 
 \renewcommand\refname{
-  \textcolor{black}{\hskip 2pt \zihao{-4}\songti{参考文献}}
+  \textcolor{black}{\hskip 0pt \zihao{-4}\songti{参考文献}}
 }
 
 % \setlength{\baselineskip}{22pt}
 
 % Prof. Mingming Chen's definition on subsection
 \def\cvprsubsection{\@startsection {subsection}{2}{\z@}
-   {11pt plus 2pt minus 2pt}{6pt} {\indent \bfseries \songti}}
+   {7pt plus 2pt minus 2pt}{6pt} {\indent \bfseries \songti}}
 \def\cvprssubsect#1{\cvprsubsection*{#1}}
-\def\cvprsubsect#1{\cvprsubsection{\hskip -1em.~#1 \vspace{-0.2em}}}
+\def\cvprsubsect#1{\cvprsubsection{#1 \vspace{-0.2em}}}
 \def\subsection{\@ifstar\cvprssubsect\cvprsubsect}
 
+\RequirePackage{titlesec}
+\titlespacing*{\subsubsection}{-12pt}{7pt plus 2pt minus 2pt}{6pt}
