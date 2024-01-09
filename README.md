@@ -5,7 +5,9 @@
 在 Readon 的模板 [NSFC-application-template-latex](https://github.com/Readon/NSFC-application-template-latex) 上修改而来，感谢 Readon 的分享。
 主要修改了一些格式、完善了参考文献的排版，方便大家使用。
 
-在 MacTeX 和 Overleaf 上均可编译通过。
+**注意：** 青基和面上的官方 2023 模板中，有个别标题有几个字的出入，请**仔细核对**自己青基/面上的模板，以免出现格式审查上的问题。
+
+iNSFCv2 在 MacTeX 和 Overleaf 上均可编译通过，且用于组内多位成员的 2023 年国家自然基金申请并未遇到问题。
 
 ---
 
