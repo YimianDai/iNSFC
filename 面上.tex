@@ -1,0 +1,135 @@
+% instrument.tex (青C/面上适配版)
+\documentclass[12pt,UTF8,AutoFakeBold=3,a4paper]{ctexart}
+
+% 1. 引入公共配置
+\input{config.tex}
+
+% 2. 页面边距设置 (保留原文件特有的边距值)
+\usepackage[a4paper, left=3.0cm,right=3.0cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+% 3. 设置缩进 (保留原文件特有的缩进值，\NsfcSubHeader 会自动读取这个值)
+\setlength{\NsfcHeaderIndent}{2em}    % 设置一级标题（如“（一）立项依据”）缩进
+\setlength{\NsfcSubHeaderIndent}{2em} % 设置二级标题（如“1. 研究背景”）缩进
+
+\begin{document}
+
+% 标题部分
+\begin{center}
+{\sanhao \mykai \bfseries 报告正文（2026版）}
+\end{center}
+\vskip -1mm
+
+% 说明文字
+{\sihao \mykai \bfseries 参照以下提纲撰写，要求内容翔实、清晰，层次分明，标题突出。{\color{red}申请书正文原则上不超过30页，鼓励简洁表达。}{\color{NsfcBlue} \bfseries 请勿删除或改动下述提纲标题及括号中的文字。}}
+
+% =======================================================
+% （一）立项依据
+% =======================================================
+\NsfcHeader{\textbf{（一）立项依据：}}
+
+% 紧接着的蓝色说明文字 (这不是标题，所以不用 NsfcSubHeader)
+\NsfcSubHeader{（为什么要开展此项研究，研究的科学技术价值如何）}
+
+如果需要引用参考文献，引用格式如下：单个文献引用的样式~\cite{Ref1}，两个非连续文献引用的样式~\cite{Ref1, Ref3}，多个连续文献自动合并的样~\cite{Ref1, Ref2, Ref3}。
+
+\section{一级标题示例}
+
+标题的宏观风格由 \texttt{style.tex} 控制：
+\begin{itemize}
+  \item \textbf{换字体}：修改以下命令中的字体宏（可改为 \verb|\heiti| 或 \verb|\songti|）：
+  \begin{codebox}
+  \verb|\newcommand{\HeadingFont}{\kaishu}|
+  \end{codebox}
+  
+  \item \textbf{换编号}：修改以下数字即可切换预设样式（1=极简理科；2=Word风；3=公文风）：
+  \begin{codebox}
+  \verb|\newcommand{\NumberingStyle}{2}|
+  \end{codebox}
+\end{itemize}
+
+标题的席位排版由 \texttt{config.tex} 控制（尽量勿动）：搜索 \verb|\titleformat| 可更改更细致标题段落格式
+
+
+\subsection{二级标题示例}
+
+二级标题。
+
+\section{第二个一级标题}
+开启新章节。
+
+\begin{spacing}{1.1}
+{\wuhao \rmfamily % 添加 \rmfamily 强制切回 Times New Roman
+\bibliographystyle{gbt7714-nsfc}
+\renewcommand{\refname}{参考文献\vspace{0.5em}}
+\bibliography{ref}
+\vspace{11bp}
+}
+\end{spacing}
+
+
+
+% =======================================================
+% （二）研究内容
+% =======================================================
+\NsfcHeader{\textbf{（二）研究内容：}}
+
+\NsfcSubHeader{（提纲不做限制，请按照研究工作的自身逻辑撰写。应提炼出特\linebreak 色与创新点、年度研究计划）}
+
+\section{一级标题示例}
+
+这里写研究内容。
+
+
+% =======================================================
+% （三）研究基础
+% =======================================================
+\NsfcHeader{\textbf{（三）研究基础：}}
+
+% 【注意】此处使用了 \NsfcSubHeader，它会自动读取 0.74cm 缩进
+\NsfcSubHeader{{\bfseries 1．研究基础与可行性分析}（与本项目相关的研究工作积累和已取得的研究工作成绩，研究风险的应对措施等）；}
+
+
+这里写研究基础的可行性分析。
+
+\NsfcSubHeader{{\bfseries 2．工作条件}（包括已具备的实验条件，尚缺少的实验条件和拟解决的途径，包括利用国家实验室、全国重点实验室\hspace{0.5em}和部门重点实验室等研究基地的计划与落实情况）；}
+
+这里写工作条件。
+
+\NsfcSubHeader{{\bfseries 3．正在承担的与本项目相关的科研项目情况}（申请人和主要参与者正在承担的与本项目相关的科研项目情况，包括国家自然科学基金的项目和国家其他科技计划项目，要注明项目的资助机构、项目类别、批准号、项目名称、获资助金额、起止年月、与本项目的关系及负责\\的内容等）；}
+
+无。
+
+\NsfcSubHeader{{\bfseries 4．完成国家自然科学基金项目情况}（对申请人负责的前一个已资助期满的科学基金项目（项目名称及批准号）完成情况、后续研究进\linebreak 展及与本申请项目的关系加以详细说明。另附该项目的研究工作总结摘要（限500字）和相关成果详细目录）。}
+
+无。
+
+
+% =======================================================
+% （四）其他需要说明的情况
+% =======================================================
+\NsfcHeader{\textbf{（四）其他需要说明的情况：}}
+
+% 下面这些虽然不加粗，但依然是“蓝色楷体四号”的标题层级，所以全用 \NsfcSubHeader
+\NsfcSubHeader{1.\hspace{0.43em}申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之\linebreak 间的区别与联系；已收到自然科学基金委不予受理或不予资助决定的，无需列出）。 }
+
+无。
+
+\NsfcSubHeader{2.\hspace{0.43em}具有高级专业技术职务（职称）的申请人或者主要参与者是否存在同年申请或者参与申请国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，申请或参与申请的其\linebreak 他项目的项目类型、项目名称、单位名称、上述人员在该项目中是申\linebreak 请人还是参与者，并说明单位不一致原因。}
+
+无。
+
+\NsfcSubHeader{3.\hspace{0.43em}具有高级专业技术职务（职称）的申请人或者主要参与者是否存在与正在承担的国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，正在承担项目的批准号、项目\linebreak 类型、项目名称、单位名称、起止年月，并说明单位不一致原因。}
+
+无。
+
+\NsfcSubHeader{4.\hspace{0.43em}申请人和主要参与者同年以不同专业技术职务（职称）申请或参与申请科学基金项目的情况（应详细说明原因）。}
+
+无。
+
+
+
+\NsfcSubHeader{5.\hspace{0.43em}其他。}
+
+无。
+
+\end{document}

@@ -1,0 +1,269 @@
+% config.tex
+\ProvidesFile{config.tex}[2026 NSFC Common Config]
+
+% =========================================================
+% 模块 1：基础宏包引入 
+% =========================================================
+\usepackage[english]{babel}
+\usepackage{xeCJK}
+\usepackage{xeCJKfntef}
+\usepackage{fontspec} 
+\usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{ulem}
+\usepackage{setspace}
+\usepackage{enumitem} % 列表控制
+\usepackage{amsmath}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{amsfonts}
+\usepackage{booktabs}
+\usepackage[subrefformat=parens,labelformat=parens]{subfig}
+\usepackage{hyperref}
+\usepackage{titlesec} 
+\usepackage{tcolorbox}
+\usepackage{amssymb}  % 提供 \blacksquare 等数学符号
+\usepackage{bm}       % 提供数学粗体
+
+% =========================================================
+% 模块 2：读取外部用户配置 (置于前方，确保全局变量生效)
+% =========================================================
+\input{style.tex}
+
+% =========================================================
+% 模块 3：基础格式与环境配置
+% =========================================================
+% --- 颜色与路径 ---
+\definecolor{NsfcBlue}{RGB}{0,112,192}
+\graphicspath{{figures/}}
+
+% --- 参考文献设置 ---
+\usepackage[square,numbers,sort&compress,super]{natbib}
+\setlength{\bibsep}{1pt plus 0.3ex}
+\pagestyle{empty}
+
+% --- 中英文字体与间距设置 ---
+\CJKsetecglue{\hskip 0.2em} % 中英文/数字间距
+\renewcommand{\baselinestretch}{1.3} 
+
+\setmainfont{Times New Roman}
+\setCJKfamilyfont{mysong}[
+    UprightFont = {fonts/simsun.ttc}, 
+    % 针对粗体单独设置 Scale
+    BoldFont    = {fonts/siyuansongti-Bold.otf},
+    BoldFeatures = {Scale=0.96} 
+]{}
+
+% 创建快捷命令
+\newcommand{\mysong}{\CJKfamily{mysong}}
+
+\newfontfamily\KaiEN[Path=fonts/, AutoFakeBold=1.8]{simkai.ttf}
+\setCJKfamilyfont{KaiCJK}[Path=fonts/, AutoFakeBold=1.8]{simkai.ttf}
+\newcommand{\mykai}{\CJKfamily{KaiCJK}\KaiEN}
+
+% --- 字号快捷命令 ---
+\newcommand{\sanhao}{\zihao{3}}
+\newcommand{\sihao}{\zihao{4}}
+\newcommand{\xiaosihao}{\zihao{-4}}
+\newcommand{\wuhao}{\zihao{5}}
+
+% --- 图表标题中文化 ---
+\addto\captionsenglish{
+    \renewcommand{\refname}{\sihao \mykai \leftline{参考文献}}
+    \renewcommand{\tablename}{表}
+    \renewcommand{\figurename}{\mykai 图}
+}
+
+% --- 列表与代码块环境 ---
+\setlist{nosep} % 清除列表多余间距
+
+\newtcolorbox{codebox}{
+    colback=gray!5,       
+    colframe=gray!30,     
+    boxrule=0.5pt,        
+    arc=2pt,              
+    left=4pt, top=2pt, bottom=2pt, right=4pt, 
+    before skip=1ex, after skip=1ex 
+}
+
+% --- 超链接颜色设置 ---
+\hypersetup{
+    colorlinks = true,              
+    citecolor  = \ThemeColor,       
+    linkcolor  = \ThemeColor,       
+    urlcolor   = \ThemeColor        
+}
+
+% =========================================================
+% 模块 4：标题排版与自定义宏 (NSFC 专用)
+% =========================================================
+
+% --- 1. 动态间距长度定义 (底层 Hack 核心) ---
+% 预设基础间距
+\newlength{\SecTopBase}
+\setlength{\SecTopBase}{2.0ex plus .2ex minus .2ex}
+\newlength{\SubSecTopBase}
+\setlength{\SubSecTopBase}{1.2ex plus .1ex minus .2ex}
+\newlength{\SubSubSecTopBase}
+\setlength{\SubSubSecTopBase}{0.8ex plus .1ex minus .1ex}
+
+% 定义当前生效的动态间距 (初始等于基础间距)
+\newlength{\SecTopCurrent}
+\setlength{\SecTopCurrent}{\SecTopBase}
+\newlength{\SubSecTopCurrent}
+\setlength{\SubSecTopCurrent}{\SubSecTopBase}
+\newlength{\SubSubSecTopCurrent}
+\setlength{\SubSubSecTopCurrent}{\SubSubSecTopBase}
+
+% --- NSFC 智能标题配置 ---
+\newlength{\NsfcHeaderIndent}
+\setlength{\NsfcHeaderIndent}{2em}
+
+\newlength{\NsfcSubHeaderIndent}
+\setlength{\NsfcSubHeaderIndent}{2em}
+
+\newlength{\NsfcHeaderTopSkip}
+\setlength{\NsfcHeaderTopSkip}{0.5em}
+
+\newif\ifIsFirstSubHeader
+\IsFirstSubHeadertrue
+
+\newcounter{NsfcHeaderCounter}
+\renewcommand{\theHsection}{\arabic{NsfcHeaderCounter}.\arabic{section}}
+
+\newcommand{\NsfcHeader}[1]{%
+    \stepcounter{NsfcHeaderCounter}%
+    \setcounter{section}{0}%
+    % 【关键】遇到全局大标题，把紧接在后面的所有子级标题顶部间距全部强行归零
+    \global\setlength{\SecTopCurrent}{0pt}%
+    \global\setlength{\SubSecTopCurrent}{0pt}%
+    \par
+    \vspace{\NsfcHeaderTopSkip}
+    \noindent\hspace{\NsfcHeaderIndent}
+    {\color{NsfcBlue}\sihao\mykai #1}
+    \par
+    \vspace{0.0em}
+    \global\IsFirstSubHeadertrue
+}
+
+\newcommand{\NsfcSubHeader}[1]{%
+    \par
+    \ifIsFirstSubHeader
+        \vspace{0.0em}
+        \global\IsFirstSubHeaderfalse
+    \else
+        \vspace{0.2em}
+    \fi
+    \noindent\hspace{\NsfcSubHeaderIndent}
+    {\sihao\color{NsfcBlue}\mykai\ziju{-0.00} #1}
+    \vspace{0mm}
+    % 【关键】遇到 NSFC 二级大标题，同样杀掉紧跟的正文标题间距
+    \global\setlength{\SecTopCurrent}{0pt}%
+    \global\setlength{\SubSecTopCurrent}{0pt}%
+}
+
+% --- 系统各级标题排版设置 (\section 等) ---
+\ifcase\NumberingStyle
+    % Case 0: (空)
+\or % Case 1: 标准
+    \renewcommand{\thesection}{\arabic{section}}
+    \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+    \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\or % Case 2: Word点号
+    \renewcommand{\thesection}{\arabic{section}.}
+    \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+    \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+\or % Case 3: 中文
+    \renewcommand{\thesection}{（\chinese{section}）} 
+    \renewcommand{\thesubsection}{\arabic{subsection}.}
+    \renewcommand{\thesubsubsection}{（\arabic{subsubsection}）}
+\fi
+
+% --- 动态间距恢复机制 ---
+% 逻辑：在排版标题主体之前（此时上方间距已经按照 0pt 结算完毕），将下一个同级标题的间距恢复为常态，并将子级标题的间距归零。
+\titleformat{\section}{\zihao{4}\HeadingFont\bfseries}{\thesection}{0.5em}{%
+    \global\setlength{\SecTopCurrent}{\SecTopBase}% 恢复下一个 \section 的间距
+    \global\setlength{\SubSecTopCurrent}{0em}% 杀掉当前 \section 下第一个 \subsection 的间距
+}
+\titlespacing{\section}{0pt}{\SecTopCurrent}{1.0ex plus .2ex minus .2ex}
+
+\titleformat{\subsection}{\zihao{4}\HeadingFont\bfseries}{\thesubsection}{0.5em}{%
+    \global\setlength{\SubSecTopCurrent}{\SubSecTopBase}% 恢复下一个 \subsection 的间距
+    \global\setlength{\SubSubSecTopCurrent}{0em}% 杀掉当前 \subsection 下第一个 \subsubsection 的间距
+}
+\titlespacing{\subsection}{0pt}{\SubSecTopCurrent}{0.5ex plus .1ex minus .2ex}
+
+\titleformat{\subsubsection}{\zihao{-4}\HeadingFont\bfseries}{\thesubsubsection}{0.5em}{%
+    \global\setlength{\SubSubSecTopCurrent}{\SubSubSecTopBase}% 恢复下一个 \subsubsection 的间距
+}
+\titlespacing{\subsubsection}{0pt}{\SubSubSecTopCurrent}{0.3ex plus .1ex minus .1ex}
+
+% =========================================================
+% 模块 5：核心文档状态注入 (合并全部 \AtBeginDocument)
+% =========================================================
+
+% 保留旧版废弃开关，防止外部主文档误调用导致直接报错
+\newif\ifUseKaiBody
+\UseKaiBodyfalse 
+
+% 定义隐身模式开关
+\newif\ifHideBody
+\HideBodyfalse
+
+% 统一管控正文字体、字号与隐身状态
+\AtBeginDocument{
+    \ifHideBody
+        % 【隐身模式】: 字体变白，字号极小，行距压扁
+        \color{white}
+        \fontsize{1pt}{1pt}\selectfont
+        \linespread{0.1}\selectfont
+    \else
+        % 【正常模式】: 强制正文小四号，并根据 style.tex 决定是否启用楷体
+        \xiaosihao 
+        \ifUseKaitiBody
+            \ifdefined\mykai \mykai \else \kaishu \fi
+        \else
+            \ifdefined\mysong \mysong \else \songti \fi
+        \fi
+    \fi
+}
+
+% =========================================================
+% 局部修复公式环境上下间距 (仅针对 equation 和 align 生效)
+% =========================================================
+\newcommand{\TightEquationSpacing}{%
+    % 基础间距 0.5em，允许上下浮动 0.1em 到 0.2em 的弹性空间
+    \setlength{\abovedisplayskip}{0.6em plus 0.2em minus 0.1em}%
+    \setlength{\belowdisplayskip}{0.6em plus 0.2em minus 0.1em}%
+    % 短行公式上方间距需进一步压缩，保持视觉紧凑
+    \setlength{\abovedisplayshortskip}{0.2em plus 0.1em}%
+    \setlength{\belowdisplayshortskip}{0.5em plus 0.2em minus 0.1em}%
+}
+
+\AtBeginEnvironment{equation}{\TightEquationSpacing}
+\AtBeginEnvironment{align}{\TightEquationSpacing}
+% 如果你还用了其他的 amsmath 环境，比如 gather, flalign 等，按同理追加即可
+
+%--------------------------------------------------------
+% 段间距
+%--------------------------------------------------------
+% 1. 声明长度变量
+\newlength{\NsfcParskip}
+
+% 2. 执行段间距设置 (利用 plus/minus 增加弹性)
+\setlength{\NsfcParskip}{\UserParskip plus 0.2ex minus 0.1ex}
+\setlength{\parskip}{\NsfcParskip}
+
+% 3. 执行列表设置 (由于包含 if 逻辑，建议放在 AtBeginDocument 避错)
+\AtBeginDocument{
+    \ifnum\UserListMode=0
+        \setlist{nosep} % 彻底无间距
+    \else
+        \setlist{
+            partopsep=0pt,
+            topsep=0.5\NsfcParskip,
+            parsep=\NsfcParskip,
+            itemsep=0.3\NsfcParskip
+        }
+    \fi
+}

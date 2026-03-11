@@ -1,0 +1,184 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 国家重大科研仪器研制项目-正文
+% 非官方模板，还请对比官方 word 考虑使用
+% 段落格式/风格/配置等在同目录下 config.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[12pt,UTF8,AutoFakeBold=3,a4paper]{ctexart}
+
+% 1. 加载核心配置
+\input{config.tex}
+
+% 2. 独立设置页边距
+\usepackage[a4paper, left=3cm,right=3cm,top=2.54cm,bottom=2.54cm]{geometry}
+
+\begin{document}
+
+\begin{center}
+% 标题保持原样
+{\sanhao \mykai \bfseries 报告正文（2026版）}
+\end{center}
+\vspace{-1mm} 
+
+% 说明文字保持原样
+{\sihao \mykai 参照以下提纲撰写，要求内容翔实、清晰，层次分明，标题突出。{\color{NsfcBlue} \bfseries 请勿删除或改动下述提纲标题及括号中的文字。}}
+\vspace{-0.4em}
+% =======================================================
+% （一）立项依据
+% =======================================================
+\NsfcHeader{\textbf{（一）立项依据}}
+
+\NsfcSubHeader{{\bfseries 科研仪器或核心部件研制的重要性和必要性} 论述研制的科研仪器或核心部件拟解决的重要科学和技术问题，同类科研仪器或核心部件的国内外研究现状和发展趋势。}
+
+
+
+\section{一级标题示例}
+
+标题的宏观风格由 \texttt{style.tex} 控制：
+\begin{itemize}
+  \item \textbf{换字体}：修改以下命令中的字体宏（可改为 \verb|\heiti| 或 \verb|\songti|）：
+  \begin{codebox}
+  \verb|\newcommand{\HeadingFont}{\kaishu}|
+  \end{codebox}
+  
+  \item \textbf{换编号}：修改以下数字即可切换预设样式（1=极简理科；2=Word风；3=公文风）：
+  \begin{codebox}
+  \verb|\newcommand{\NumberingStyle}{2}|
+  \end{codebox}
+\end{itemize}
+
+标题的细微排版由 \texttt{config.tex} 控制（尽量勿动）：搜索 \verb|\titleformat| 可更改更细致标题段落格式。
+
+示例自定义加粗：\mybf{示例加粗},加粗自定义颜色，颜色可以在 \texttt{style.tex} 中调
+\begin{itemize}
+    \begin{codebox}
+    \verb|\mybf{这里是加粗内容}|
+    \end{codebox}
+\end{itemize}
+
+如果需要引用参考文献，引用格式如下：单个文献引用的样式~\cite{Ref1}，两个非连续文献引用的样式~\cite{Ref1, Ref3}，多个连续文献自动合并的样~\cite{Ref1, Ref2, Ref3}。
+
+\subsection{二级标题示例}
+二级标题。
+
+\subsubsection{三级标题示例}
+三级标题。
+
+\section{第二个一级标题}
+
+\subsection{第二个二级标题}
+开启新章节。
+
+
+\begin{spacing}{1.1}
+\vspace{0.5em}
+{\wuhao \rmfamily % 添加 \rmfamily 强制切回 Times New Roman
+\bibliographystyle{gbt7714-nsfc}
+\renewcommand{\refname}{参考文献\vspace{0.5em}}
+\bibliography{ref}
+\vspace{11bp}
+}
+\end{spacing}
+
+
+
+% =======================================================
+% （二）研制方案和计划
+% =======================================================
+\NsfcHeader{\textbf{（二）研制方案和计划}}
+
+\NsfcSubHeader{{\bfseries 1．研制内容与方案}科研仪器或核心部件的设计思想、总体结构等\linebreak 
+\hspace*{0.1em}（请在此重点描述原理创新、技术创新或独到之处）；技术性能与主要\linebreak 
+技术指标（含主要技术指标的提出依据和科学意义）；技术路线及设计\linebreak 
+图；关键核心技术和解决方案；可购置或集成的部分以及配套部件解\linebreak 
+决方案。}
+
+
+
+这里写研制内容与方案。
+
+\NsfcSubHeader{{\bfseries 2．拟解决的关键科学问题，拟取得的具有自主知识产权的关键技术}仪器研制过程中拟解决的关键科学或技术难题，拟取得的具有自主知识产权的关键技术；完成研制后，拟使用该仪器或核心部件解决的关键科学或技术问题。}
+
+这里写拟解决的关键科学问题。
+
+\NsfcSubHeader{{\bfseries 3.\hspace{0.0em}研制方案可行性分析}\hspace{-0.05em}（含研制风险与不确定性分析、应对措施{\bfseries）}。}
+\vspace{-1.8em}
+
+这里写可行性分析。
+
+\NsfcSubHeader{{\bfseries 4．预期成果。}}
+
+这里写预期成果。
+
+\NsfcSubHeader{{\bfseries 5.\hspace{0.1em}验收指标的可考核性。}}
+
+这里写验收指标。
+
+\NsfcSubHeader{{\bfseries 6．年度研制计划}（含项目中期检查的阶段性目标）。}
+
+这里写年度研制计划。
+
+
+% =======================================================
+% （三）研制基础及条件保障
+% =======================================================
+\NsfcHeader{{\bfseries （三）研制基础及条件保障}}
+
+% 【修正】删除了原来这行下面的 \vskip 1mm
+\NsfcSubHeader{{\bfseries 1．研制基础} 理论基础、技术基础；国内外可供利用的技术资源；人才队伍状况。}
+
+这里写研制基础。
+
+% 【修正】删除了原来这行下面的 \vskip 1mm
+\NsfcSubHeader{{\bfseries 2．工作条件} 实验场地、实验环境、公用配套设施、研究人员的 \linebreak 时间保证等。}
+
+这里写工作条件。
+
+\NsfcSubHeader{{\bfseries 3.\hspace{0.1em}项目实施管理和保障措施}（申请人组织实施能力，项目运行管理模式，知识产权管理措施，项目档案与固定资产管理措施，依托单 \linebreak 位的配套措施与政策支持）。}
+
+这里写管理和保障措施。
+
+\NsfcSubHeader{{\bfseries 4.\hspace{0.1em}申请人和主要参与者仪器设备研制工作经验}[\hspace{-0.05em}其中，\hspace{-0.2em}如果申请人或主要参与者曾经或正在主持仪器设备研制或开发类项目，须在此列明项目的资助机构、项目类别、批准号、项目名称、获资助金额、起 \linebreak 止年月信息，并说明该项目的完成情况（已经结题的附结题报告摘要）以及该项目与本项目的关系][其中，如果申请人或主要参与者曾经主持部门推荐类国家重大科研仪器研制项目（含国家重大科研仪器设备研制专项项目）且已完成项目后评估的，须在此列明已完成后评估项\linebreak 目的后评估等级和后评估报告摘要]。}
+
+这里写研制工作经验。
+
+
+% =======================================================
+% （四）其他需要说明的情况
+% =======================================================
+% 【修正】删除了原来这行上面的 \vskip 1mm
+\NsfcHeader{{\bfseries（四）其他需要说明的情况}}
+
+\NsfcSubHeader{{\bfseries 1.\hspace{0.3em}正在承担科研项目情况}（申请人和主要参与者正在承担的科研项目情况，要注明项目的资助机构、项目类别、批准号、项目名称、\linebreak 获资助金额、起止年月、与本项目的关系及负责的内容等；在“申请\linebreak 人和主要参与者仪器设备研制工作经验”中已说明的项目，无需重复\linebreak 录入）。}
+
+无。
+
+% 【修正】加上了 {\bfseries ...} 以保持风格统一
+\NsfcSubHeader{2.\hspace{0.3em}申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之\linebreak 间的区别与联系；已收到自然科学基金委不予受理或不予资助决定的，无需列出）。}
+
+无。
+
+% 【修正】加上了 {\bfseries ...} 以保持风格统一
+\NsfcSubHeader{3.\hspace{0.3em}具有高级专业技术职务（职称）的申请人或者主要参与者存在
+\linebreak 同年申请或者参与申请国家自然科学基金项目的单位不一致的情况\linebreak \hspace*{0.0em}（列明所涉及人员的姓名，申请或参与申请的其他项目的项目类型、\linebreak 项目名称、单位名称、上述人员在该项目中是申请人还是参与者，并说明单位不一致原因）。}
+
+无。
+
+% 【修正】加上了 {\bfseries ...} 以保持风格统一
+\NsfcSubHeader{4.\hspace{0.3em}具有高级专业技术职务（职称）的申请人或者主要参与者存在与正在承担的国家自然科学基金项目的单位不一致的情况（列明所涉及人员的姓名，正在承担项目的批准号、项目类型、项目名称、单位\linebreak 名称、起止年月，并说明单位不一致原因）。}
+
+无。
+
+% 【修正】加上了 {\bfseries ...} 以保持风格统一
+\NsfcSubHeader{5.\hspace{0em}申请人和主要参与者同年以不同专业技术职务（职称）申请或参与申请科学基金项目的情况（应详细说明原因）。}
+
+无。
+
+% 【修正】将原本硬编码的第6点改为 \NsfcSubHeader，并加上了 {\bfseries ...}
+\NsfcSubHeader{6.\hspace{0.3em}其他。}
+
+无。
+
+\end{document}
