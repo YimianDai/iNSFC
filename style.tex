@@ -53,3 +53,13 @@
 \definecolor{myemphasize}{RGB}{0, 0, 64} % 经典学术蓝，比纯黑更有质感#000640
 % 定义自定义加粗命令 \mybf
 \newcommand{\mybf}[1]{{\color{myemphasize}\textbf{#1}}}
+
+% =========================================================
+% 图注样式全局开关
+% =========================================================
+% 控制图注整体字体：1=宋体, 2=黑体(你的配置中为粗宋), 3=楷体
+\def\CaptionFontType{3} 
+
+% 控制标签（例如“图1”）本身是否加粗
+\newif\ifCaptionLabelBold
+\CaptionLabelBoldtrue % 开启加粗写 \CaptionLabelBoldtrue，关闭写 \CaptionLabelBoldfalse
