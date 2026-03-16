@@ -1,0 +1,47 @@
+\section{一级标题示例}
+
+标题的宏观风格由 \texttt{style.tex} 控制：
+\begin{itemize}
+  \item \textbf{换字体}：修改以下命令中的字体宏（可改为 \verb|\heiti| 或 \verb|\songti|）：
+  \begin{codebox}
+  \verb|\newcommand{\HeadingFont}{\kaishu}|
+  \end{codebox}
+  
+  \item \textbf{换编号}：修改以下数字即可切换预设样式（1=极简理科；2=Word风；3=公文风）：
+  \begin{codebox}
+  \verb|\newcommand{\NumberingStyle}{2}|
+  \end{codebox}
+\end{itemize}
+
+标题的细微排版由 \texttt{config.tex} 控制（尽量勿动）：搜索 \verb|\titleformat| 可更改更细致标题段落格式。
+
+示例自定义加粗：\mybf{示例加粗},加粗自定义颜色，颜色可以在 \texttt{style.tex} 中调
+\begin{itemize}
+    \begin{codebox}
+    \verb|\mybf{这里是加粗内容}|
+    \end{codebox}
+\end{itemize}
+
+如果需要引用参考文献，引用格式如下：单个文献引用的样式~\citep{Ref1}，两个非连续文献引用的样式~\cite{Ref1, Ref3}，多个连续文献自动合并的样式~\cite{Ref1, Ref2, Ref3}。
+
+\subsection{二级标题示例}
+二级标题。
+
+\subsubsection{三级标题示例}
+三级标题。
+
+\section{第二个一级标题}
+
+\subsection{第二个二级标题}
+开启新章节。
+
+
+\begin{spacing}{1.1}
+\vspace{0.5em}
+{\wuhao \rmfamily % 添加 \rmfamily 强制切回 Times New Roman
+\bibliographystyle{gbt7714-nsfc}
+\renewcommand{\refname}{参考文献\vspace{0em}}
+\bibliography{ref}
+\vspace{11bp}
+}
+\end{spacing}

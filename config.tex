@@ -37,10 +37,28 @@
 \definecolor{NsfcBlue}{RGB}{0,112,192}
 \graphicspath{{figures/}}
 
+% --- 修改前的代码 ---
+% \usepackage[square,numbers,sort&compress]{natbib}
+% \DeclareRobustCommand\citet{\bibpunct{[}{]}{,}{n}{}{}\cite}
+
 % --- 参考文献设置 ---
-\usepackage[square,numbers,sort&compress,super]{natbib}
+% 1. 必须去掉 super 参数，否则底层所有命令都会被强制上标
+\usepackage[square,numbers,sort&compress]{natbib} 
 \setlength{\bibsep}{1pt plus 0.3ex}
+
+% 2. 重新定义 \cite 为上标模式 (用于句末)
+\let\oldcite\cite
+\renewcommand{\cite}[1]{\textsuperscript{\oldcite{#1}}}
+
+% 3. 重新定义 \citep 为平齐模式 (用于“文献 [x]”)
+\renewcommand{\citep}[1]{\raisebox{0.15ex}{\oldcite{#1}}}
+
+% 4. 辅助命令：如果你连“文献”两个字都不想打
+\newcommand{\citeauth}[1]{文献~\oldcite{#1}}
+
 \pagestyle{empty}
+\usepackage{bibunits}
+\defaultbibliographystyle{gbt7714-nsfc}
 
 % --- 中英文字体与间距设置 ---
 \CJKsetecglue{\hskip 0.2em} % 中英文/数字间距
@@ -267,3 +285,47 @@
         }
     \fi
 }
+
+\usepackage{caption}
+
+% =========================================================
+% --- 图注高级样式接管 ---
+% =========================================================
+
+% 1. 还原分隔符（无冒号，纯间距控制图号与图注正文的距离）
+\DeclareCaptionLabelSeparator{tinyspace}{\hspace{0.5em}} 
+
+% 2. 彻底抹杀“图”与“数字”之间的默认宽空格
+% #1 代表“图”或“表”，#2 代表数字。使用极小间距 0.1em，如果想完全贴合直接写 #1#2
+\DeclareCaptionLabelFormat{tightlabel}{#1\hspace{0.2em}#2} 
+
+% 3. 剥离旧版硬编码
+\addto\captionsenglish{
+    \renewcommand{\figurename}{图}
+    \renewcommand{\tablename}{表}
+}
+
+% 4. 字体映射解析
+\ifcase\CaptionFontType
+    % 0 留空防报错
+\or \DeclareCaptionFont{capfont}{\songti}             % 1=宋体
+\or \DeclareCaptionFont{capfont}{\songti\bfseries}    % 2=黑体(思源黑宋)
+\or \DeclareCaptionFont{capfont}{\mykai}              % 3=楷体
+\fi
+
+% 5. 样式组合与全局应用
+\ifCaptionLabelBold
+    \captionsetup{
+        font=capfont,              
+        labelfont=bf,              
+        labelformat=tightlabel,    % 强行注入紧凑标签格式
+        labelsep=tinyspace         % 强行注入无冒号分隔符
+    }
+\else
+    \captionsetup{
+        font=capfont,              
+        labelfont=normalfont,      
+        labelformat=tightlabel,    % 强行注入紧凑标签格式
+        labelsep=tinyspace         
+    }
+\fi
