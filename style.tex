@@ -39,10 +39,12 @@
 %  开关 5：全局布局与间距调控
 % ---------------------------------------------------------
 % 设置说明：
-% 1. 段间距 (UserParskip): 建议值 0.3ex 到 0.8ex。若篇幅吃紧可设为 0pt。
+% 1. 行距（相当于Word中的N倍行距）
+\renewcommand{\baselinestretch}{1.5} 
+% 2. 段间距 (UserParskip): 建议值 0.3ex 到 0.8ex。若篇幅吃紧可设为 0pt。
 \newcommand{\UserParskip}{0.5ex} % <--- 修改这里：段间距数值 (如 0.5ex, 3pt)
 
-% 2. 列表模式 (UserListMode): 
+% 3. 列表模式 (UserListMode): 
 %    0 = 极致紧凑: 列表项内外完全不留白 (nosep)，最省空间。
 %    1 = 宽松美观: 列表间距随段间距自动按比例缩放，呼吸感强。
 \newcommand{\UserListMode}{0}    % <--- 修改这里：0 或 1
