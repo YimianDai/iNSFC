@@ -2,6 +2,9 @@
 .DS_Store
 /haiyou.pdf
 
+## tmp docx files on macOS
+~$*
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
