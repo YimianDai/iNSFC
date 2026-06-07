@@ -1,20 +1,21 @@
 % =========================================================
-% 青A模板
+% 海优模板
 % =========================================================
-% instrument.tex (青A)
-\documentclass[11pt,UTF8,AutoFakeBold=3,a4paper]{ctexart}
+% instrument.tex (海优)
+\documentclass[12pt,UTF8,AutoFakeBold=3,a4paper]{ctexart}
 
 % 1. 引入公共配置 (包含所有宏包、格式、字体、颜色定义、行距等)
 \input{config.tex}
 
-\setlength{\NsfcHeaderIndent}{2em}    % 设置一级标题（如”（一）立项依据”）缩进
-\setlength{\NsfcSubHeaderIndent}{2em} % 设置二级标题（如”1. 研究背景”）缩进
+\setlength{\NsfcHeaderIndent}{1.5em}    % 设置一级标题（如”（一）立项依据”）缩进
+\setlength{\NsfcSubHeaderIndent}{1.5em} % 设置二级标题（如”1. 研究背景”）缩进
 
+\newcommand{\kai}[1]{{\sihao\mykai{}#1}}
+\newcommand{\kaiblue}[1]{{\sihao\color{NsfcBlue}\mykai{}#1}}
 \newcommand{\hlb}[1]{{\sihao\color{NsfcBlue}\mykai\ziju{-0.00}#1}}
-\newcommand{\hl}[1]{{\sihao\mykai\vspace{-0.5cm}#1}}
 \newcommand{\blue}[1]{{\color{NsfcBlue}#1}}
 
-% 2. 页面边距设置 (青A专用，若需调整仅修改此处)
+% 2. 页面边距设置 (海优专用，若需调整仅修改此处)
 
 \usepackage[a4paper, left=3cm,right=3cm,top=2.54cm,bottom=2.54cm]{geometry}
 \usepackage{amsfonts}
@@ -28,64 +29,56 @@
 \end{center}
 \vskip 5mm
 
-\hl{参照以下提纲撰写，要求内容翔实、清晰，层次分明，标题突出。}
+\kai{参照以下提纲撰写，要求内容翔实、清晰，层次分明，标题突出。}
 
-The proposal shall be written in accordance with the following outline,
-with informative content, clear structure, and prominent titles.
+The proposal shall be written in accordance with the following outline, with informative content, clear structure, and prominent titles.
 
-\NsfcSubHeader{ \bfseries 请勿删除或改动下述提纲标题及括号中的文字}
+\NsfcSubHeader{请勿删除或改动下述提纲标题及括号中的文字。}
 
 \blue{Please do not delete or change the title of the outline and the words in brackets.}
 
-\NsfcHeader{{\bfseries（一）主要学术成绩}（建议不超过4000字）}
+\NsfcHeader{{\bfseries （一）主要学术成绩}（建议不超过4000字）}
 
-{\bf Major academic achievements (no more than 4000 words)}
+\blue{\bfseries Major academic achievements (no more than 4000 words)}
 
-\hlb{着重阐述所取得研究成果的创新性、科学价值及本人贡献等。}
+\NsfcSubHeader{着重阐述所取得研究成果的创新性、科学价值及本人贡献等。}
 
 \blue{In this part, you shall focus on the innovativeness and scientific value of the research results, and your personal contribution.}
 
-% \input{sample-nobib}
-
-\input{partA}
-
-\NsfcHeader{{\bfseries（二）全职回国（来华）后拟开展的研究工作}（建议不超过 4000 字）}
+\vspace{0.8cm}
+\NsfcHeader{{\bfseries （二）全职回国（来华）后拟开展的研究工作}（建议不超过4000字）}
 
 \blue{The research work to be carried out after returning/coming to China full-time (no more than 4000 words)}
 
-\hlb{主要阐述全职回国（来华）后主要研究方向和思路、预期目标、团队和 科研条件的支撑情况。}
+\NsfcSubHeader{主要阐述全职回国（来华）后主要研究方向和思路、预期目标、团队和科研条件的支撑情况。}
 
 \blue{In this part, you shall mainly expound the main research direction and ideas, expected goals, team and research conditions after returning/coming to China full-time.}
 
-\input{partB}
+
+\input{sample}
 
 
-% 如果需要引用参考文献，可以按照如下示例
-%基于匈牙利算法~\cite{hungarian}实现关联匹配。
-%中山大学Wu等人~\cite{2019Instance}引入联合关联矩阵。另一个方法~\cite{kim2021discriminative}如何如何。
+\NsfcHeader{{\bfseries （三）其他需要说明的问题 Other issues need to be addressed.}}
 
-% \begin{spacing}{1.1}
-% {\kaishu \wuhao
-% \bibliographystyle{gbt7714-nsfc}
-% \bibliography{main}
-% \vspace{11bp}
-% }
-% \end{spacing}
+\NsfcSubHeader{1. 申请人同年申请不同类型的国家自然科学基金项目情况（列明同年申请的其他项目的项目类型、项目名称信息，并说明与本项目之间的区别与联系；已收到自然科学基金委不予受理或不予资助决定的，无需列出）。}
 
+无
 
-\begin{spacing}{1.1}
-\vspace{0.5em}
-{\wuhao \rmfamily % 添加 \rmfamily 强制切回 Times New Roman
-\bibliographystyle{gbt7714-nsfc}
-% \bibliographystyle{apj}
-\renewcommand{\refname}{参考文献}
-\bibliography{main}
-\vspace{11bp}
-}
-\end{spacing}
+\NsfcSubHeader{2. 具有高级专业技术职务（职称）的申请人是否存在同年申请\hspace{2em}或者参与申请国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，申请或参与申请的其他项目的项目类型、项目名称、单位名称、上述人员在该项目中是申请人还是参与者，并说明单位不一致原因。}
 
+无
 
+\NsfcSubHeader{3. 具有高级专业技术职务（职称）的申请人是否存在与正在承担的国家自然科学基金项目的单位不一致的情况；如存在上述情况，列明所涉及人员的姓名，正在承担项目的批准号、项目类型、项目名称、单位名称、起止年月，并说明单位不一致原因。}
 
+无
+
+\NsfcSubHeader{4. 同年以不同专业技术职务（职称）申请或参与申请科学基金项目的情况（应详细说明原因）。}
+
+无
+
+\NsfcSubHeader{5.其他。}
+
+无
 
 \end{document}
 
