@@ -143,6 +143,9 @@
 \newlength{\NsfcHeaderTopSkip}
 \setlength{\NsfcHeaderTopSkip}{0.5em}
 
+\newlength{\NsfcSubHeaderTopSkip}
+\setlength{\NsfcSubHeaderTopSkip}{0.2em}
+
 \newif\ifIsFirstSubHeader
 \IsFirstSubHeadertrue
 
@@ -170,7 +173,7 @@
         \vspace{0.0em}
         \global\IsFirstSubHeaderfalse
     \else
-        \vspace{0.2em}
+        \vspace{\NsfcSubHeaderTopSkip}
     \fi
     \noindent\hspace{\NsfcSubHeaderIndent}
     {\sihao\color{NsfcBlue}\mykai\ziju{-0.00} #1}
